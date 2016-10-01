@@ -12,12 +12,14 @@ class InputCommentViewController: UIViewController {
   @IBOutlet weak var placeLabel: UILabel!
   @IBOutlet weak var genreLabel: UILabel!
   @IBOutlet weak var amountLabel: UILabel!
+  @IBOutlet weak var commentTextView: UITextField!
 
   override func viewDidLoad() {
     super.viewDidLoad()
     placeLabel.text = zaim.place
     genreLabel.text = zaim.genre
     amountLabel.text = "¥" + String(zaim.amount)
+    commentTextView.becomeFirstResponder()
   }
   
   /* 登録 */
