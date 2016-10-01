@@ -10,7 +10,7 @@ import Foundation
 
 class Zaim {
   
-  var plice: String = "";
+  var place: String = "";
   var genre: String = "";
   var amount: Int = 0;
   var comment: String = "";

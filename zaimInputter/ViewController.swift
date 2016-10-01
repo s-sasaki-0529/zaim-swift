@@ -16,6 +16,9 @@ class ViewController: UIViewController {
     super.viewDidLoad()
   }
 
+  @IBAction func onTappedPlaceButton(sender: UIButton) {
+    zaim.place = sender.currentTitle!
+  }
 
 
 }
