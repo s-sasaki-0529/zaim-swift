@@ -158,26 +158,41 @@
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="食料品"/>
+                                        <connections>
+                                            <action selector="onTappedGenreButton:" destination="XIZ-5o-Yjv" eventType="touchUpInside" id="L8L-V4-ypW"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1i-DD-yIv">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="朝ご飯"/>
+                                        <connections>
+                                            <action selector="onTappedGenreButton:" destination="XIZ-5o-Yjv" eventType="touchUpInside" id="6xi-Wh-Aqq"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vd-c7-Lcv">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="昼ご飯"/>
+                                        <connections>
+                                            <action selector="onTappedGenreButton:" destination="XIZ-5o-Yjv" eventType="touchUpInside" id="frX-WD-Mxg"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ur-yQ-YWQ">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="晩ご飯"/>
+                                        <connections>
+                                            <action selector="onTappedGenreButton:" destination="XIZ-5o-Yjv" eventType="touchUpInside" id="2oJ-tG-3ML"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldq-4j-9pf">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="消耗品"/>
+                                        <connections>
+                                            <action selector="onTappedGenreButton:" destination="XIZ-5o-Yjv" eventType="touchUpInside" id="3gr-Tv-89o"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -248,15 +263,18 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <segue destination="1Ea-6P-6Rc" kind="show" identifier="amountinputter" id="LGQ-Ms-gMd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PSw-9v-NbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1003.5" y="388"/>
         </scene>
-        <!--View Controller-->
+        <!--Amount Inputter View Controller-->
         <scene sceneID="5tG-hJ-qPc">
             <objects>
-                <viewController id="1Ea-6P-6Rc" sceneMemberID="viewController">
+                <viewController id="1Ea-6P-6Rc" customClass="AmountInputterViewController" customModule="zaimInputter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hmO-C7-HyB"/>
                         <viewControllerLayoutGuide type="bottom" id="i0h-yS-Iac"/>
@@ -273,6 +291,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMx-Zl-jDD">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="戻る"/>
+                                <connections>
+                                    <action selector="onTappedBackButton" destination="1Ea-6P-6Rc" eventType="touchUpInside" id="8qo-QR-VJQ"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="nlH-pr-I7z">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="110"/>
