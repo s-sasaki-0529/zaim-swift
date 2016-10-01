@@ -541,23 +541,49 @@
                                     <action selector="onTappedBackButton" destination="eVw-ln-Jy9" eventType="touchUpInside" id="SR5-cl-hWH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1z-T1-chR">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="73"/>
-                                <state key="normal" title="登録"/>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xss-kb-lrM">
+                                <rect key="frame" x="0.0" y="0.0" width="110" height="200"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1z-T1-chR">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="39"/>
+                                        <state key="normal" title="登録"/>
+                                        <connections>
+                                            <action selector="onTappedSubmitButton" destination="eVw-ln-Jy9" eventType="touchUpInside" id="Iz2-Iv-KG8"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2VE-lW-c9k">
+                                        <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKG-5F-HpN">
+                                        <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbV-mN-3PT">
+                                        <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="xss-kb-lrM" firstAttribute="leading" secondItem="cv3-um-3FC" secondAttribute="leadingMargin" id="BrN-3i-9uO"/>
                             <constraint firstItem="Tue-f6-41x" firstAttribute="trailing" secondItem="cv3-um-3FC" secondAttribute="trailingMargin" id="J9h-eg-fA2"/>
                             <constraint firstItem="MAE-H9-Ao8" firstAttribute="leading" secondItem="cv3-um-3FC" secondAttribute="leadingMargin" id="LXA-3X-8sC"/>
-                            <constraint firstItem="C1z-T1-chR" firstAttribute="trailing" secondItem="cv3-um-3FC" secondAttribute="trailingMargin" id="R22-7G-Iih"/>
                             <constraint firstItem="j3i-CC-oQB" firstAttribute="trailing" secondItem="cv3-um-3FC" secondAttribute="trailingMargin" id="YYx-sw-Toc"/>
-                            <constraint firstItem="C1z-T1-chR" firstAttribute="leading" secondItem="cv3-um-3FC" secondAttribute="leadingMargin" id="al3-YL-QxL"/>
                             <constraint firstItem="MAE-H9-Ao8" firstAttribute="top" secondItem="3w2-Z8-R1w" secondAttribute="bottom" constant="8" id="bcf-Ah-0dT"/>
+                            <constraint firstItem="xss-kb-lrM" firstAttribute="top" secondItem="j3i-CC-oQB" secondAttribute="bottom" constant="8" id="cKj-k4-vbJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xss-kb-lrM" secondAttribute="trailing" id="ckJ-PW-FoA"/>
                             <constraint firstItem="Tue-f6-41x" firstAttribute="top" secondItem="3w2-Z8-R1w" secondAttribute="bottom" constant="19" id="lM2-un-Eol"/>
                             <constraint firstItem="j3i-CC-oQB" firstAttribute="top" secondItem="MAE-H9-Ao8" secondAttribute="bottom" constant="8" id="rYh-VW-4XH"/>
-                            <constraint firstItem="C1z-T1-chR" firstAttribute="top" secondItem="j3i-CC-oQB" secondAttribute="bottom" constant="8" id="t6O-F4-ucR"/>
                             <constraint firstItem="j3i-CC-oQB" firstAttribute="leading" secondItem="cv3-um-3FC" secondAttribute="leadingMargin" id="xwv-Y2-19O"/>
                         </constraints>
                         <variation key="default">
@@ -565,7 +591,7 @@
                                 <exclude reference="MAE-H9-Ao8"/>
                                 <exclude reference="j3i-CC-oQB"/>
                                 <exclude reference="Tue-f6-41x"/>
-                                <exclude reference="C1z-T1-chR"/>
+                                <exclude reference="xss-kb-lrM"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="LXA-3X-8sC"/>
@@ -573,9 +599,9 @@
                                 <exclude reference="YYx-sw-Toc"/>
                                 <exclude reference="rYh-VW-4XH"/>
                                 <exclude reference="xwv-Y2-19O"/>
-                                <exclude reference="R22-7G-Iih"/>
-                                <exclude reference="al3-YL-QxL"/>
-                                <exclude reference="t6O-F4-ucR"/>
+                                <exclude reference="BrN-3i-9uO"/>
+                                <exclude reference="cKj-k4-vbJ"/>
+                                <exclude reference="ckJ-PW-FoA"/>
                                 <exclude reference="J9h-eg-fA2"/>
                                 <exclude reference="lM2-un-Eol"/>
                             </mask>
@@ -585,7 +611,7 @@
                                 <include reference="MAE-H9-Ao8"/>
                                 <include reference="j3i-CC-oQB"/>
                                 <include reference="Tue-f6-41x"/>
-                                <include reference="C1z-T1-chR"/>
+                                <include reference="xss-kb-lrM"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="LXA-3X-8sC"/>
@@ -593,14 +619,19 @@
                                 <include reference="YYx-sw-Toc"/>
                                 <include reference="rYh-VW-4XH"/>
                                 <include reference="xwv-Y2-19O"/>
-                                <include reference="R22-7G-Iih"/>
-                                <include reference="al3-YL-QxL"/>
-                                <include reference="t6O-F4-ucR"/>
+                                <include reference="BrN-3i-9uO"/>
+                                <include reference="cKj-k4-vbJ"/>
+                                <include reference="ckJ-PW-FoA"/>
                                 <include reference="J9h-eg-fA2"/>
                                 <include reference="lM2-un-Eol"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="amountLabel" destination="NbV-mN-3PT" id="ajp-fl-z43"/>
+                        <outlet property="genreLabel" destination="LKG-5F-HpN" id="Cai-a5-Uu0"/>
+                        <outlet property="placeLabel" destination="2VE-lW-c9k" id="MHB-i6-tNA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QZw-bH-lCk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
