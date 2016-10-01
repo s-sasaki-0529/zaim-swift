@@ -305,26 +305,41 @@
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <state key="normal" title="7"/>
+                                                <connections>
+                                                    <action selector="onTappedNumberButton:" destination="1Ea-6P-6Rc" eventType="touchUpInside" id="Euc-h9-dC2"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3W-7D-cCu">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <state key="normal" title="4"/>
+                                                <connections>
+                                                    <action selector="onTappedNumberButton:" destination="1Ea-6P-6Rc" eventType="touchUpInside" id="kRF-xB-QDB"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6m-YZ-hG1">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <state key="normal" title="1"/>
+                                                <connections>
+                                                    <action selector="onTappedNumberButton:" destination="1Ea-6P-6Rc" eventType="touchUpInside" id="aU0-ZQ-7ic"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usd-wl-1eh">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <state key="normal" title="÷2"/>
+                                                <connections>
+                                                    <action selector="onTappedDiv2Button" destination="1Ea-6P-6Rc" eventType="touchUpInside" id="QXV-c9-atm"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39E-L5-ZAU">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <state key="normal" title="←"/>
+                                                <connections>
+                                                    <action selector="onTappedDeleteButton" destination="1Ea-6P-6Rc" eventType="touchUpInside" id="QFW-b9-EKk"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -335,26 +350,43 @@
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <state key="normal" title="8"/>
+                                                <connections>
+                                                    <action selector="onTappedNumberButton:" destination="1Ea-6P-6Rc" eventType="touchUpInside" id="Bf2-gx-4So"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYf-aW-D6t">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <state key="normal" title="5"/>
+                                                <connections>
+                                                    <action selector="onTappedNumberButton:" destination="1Ea-6P-6Rc" eventType="touchUpInside" id="QMt-a7-r8c"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ax-No-RcG">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <state key="normal" title="2"/>
+                                                <connections>
+                                                    <action selector="onTappedNumberButton:" destination="1Ea-6P-6Rc" eventType="touchUpInside" id="80Q-q3-BtY"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m8o-JR-I2I">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <state key="normal" title="×1.08"/>
+                                                <connections>
+                                                    <action selector="onTappedTaxButton" destination="1Ea-6P-6Rc" eventType="touchUpInside" id="3bf-Xl-0qE"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VY4-0T-OpH">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                                <state key="normal" title="C"/>
+                                                <state key="normal" title="C">
+                                                    <color key="titleColor" red="0.86989392452006975" green="0.16535613698801094" blue="0.19778252953857373" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onTappedClearButton" destination="1Ea-6P-6Rc" eventType="touchUpInside" id="6Cx-5n-ZcD"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -365,21 +397,33 @@
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <state key="normal" title="9"/>
+                                                <connections>
+                                                    <action selector="onTappedNumberButton:" destination="1Ea-6P-6Rc" eventType="touchUpInside" id="nhK-KD-qBM"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AqK-F2-zv7">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <state key="normal" title="6"/>
+                                                <connections>
+                                                    <action selector="onTappedNumberButton:" destination="1Ea-6P-6Rc" eventType="touchUpInside" id="Uci-zA-j1U"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="moc-JZ-2jg">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <state key="normal" title="3"/>
+                                                <connections>
+                                                    <action selector="onTappedNumberButton:" destination="1Ea-6P-6Rc" eventType="touchUpInside" id="jGG-Xh-xiu"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X32-gk-7jb">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <state key="normal" title="0"/>
+                                                <connections>
+                                                    <action selector="onTappedZeroButton:" destination="1Ea-6P-6Rc" eventType="touchUpInside" id="WU1-Jy-nZQ"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9h0-fD-KEx">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -395,7 +439,7 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgE-bk-V2a">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgE-bk-V2a">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -460,6 +504,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="amountLabel" destination="CgE-bk-V2a" id="9QV-LS-RIx"/>
                         <segue destination="eVw-ln-Jy9" kind="show" identifier="inputcomment" id="5az-Hz-Z2j"/>
                     </connections>
                 </viewController>
