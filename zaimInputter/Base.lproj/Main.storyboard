@@ -126,15 +126,18 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <segue destination="XIZ-5o-Yjv" kind="show" identifier="genreselecter" id="hXa-if-4Uc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="324" y="388"/>
         </scene>
-        <!--View Controller-->
+        <!--Genre Selecter View Controller-->
         <scene sceneID="GVb-dY-zlu">
             <objects>
-                <viewController id="XIZ-5o-Yjv" sceneMemberID="viewController">
+                <viewController id="XIZ-5o-Yjv" customClass="GenreSelecterViewController" customModule="zaimInputter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b3v-eu-gk1"/>
                         <viewControllerLayoutGuide type="bottom" id="69n-mO-xCx"/>
@@ -194,6 +197,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfr-0D-o2V">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="戻る"/>
+                                <connections>
+                                    <action selector="onTappedBackButton" destination="XIZ-5o-Yjv" eventType="touchUpInside" id="v9y-sz-OVL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

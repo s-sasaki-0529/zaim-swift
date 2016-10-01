@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GenreSelecterViewController.swift
 //  zaimInputter
 //
 //  Created by 笹木信吾 on 2016/10/01.
@@ -8,19 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class GenreSelecterViewController: UIViewController {
   private let zaim: Zaim = (UIApplication.sharedApplication().delegate as! AppDelegate).zaim
   
   override func viewDidLoad() {
     super.viewDidLoad()
   }
-
-  @IBAction func onTappedPlaceButton(sender: UIButton) {
-    zaim.place = sender.currentTitle!
-    self.performSegueWithIdentifier("genreselecter", sender: self)
+  
+  @IBAction func onTappedBackButton() {
+    self.dismissViewControllerAnimated(true, completion: nil)
   }
-
-
+  
 }
-
