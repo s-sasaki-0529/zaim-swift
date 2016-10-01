@@ -13,6 +13,7 @@
 		28C7B47A1D9F3B31009C772A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28C7B4791D9F3B31009C772A /* Assets.xcassets */; };
 		28C7B47D1D9F3B31009C772A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28C7B47B1D9F3B31009C772A /* LaunchScreen.storyboard */; };
 		28C7B4851D9F6420009C772A /* Zaim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C7B4841D9F6420009C772A /* Zaim.swift */; };
+		28C7B4871D9F69F0009C772A /* GenreSelecterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C7B4861D9F69F0009C772A /* GenreSelecterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		28C7B47C1D9F3B31009C772A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		28C7B47E1D9F3B31009C772A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28C7B4841D9F6420009C772A /* Zaim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zaim.swift; sourceTree = "<group>"; };
+		28C7B4861D9F69F0009C772A /* GenreSelecterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreSelecterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +59,13 @@
 			isa = PBXGroup;
 			children = (
 				28C7B4721D9F3B31009C772A /* AppDelegate.swift */,
-				28C7B4741D9F3B31009C772A /* ViewController.swift */,
 				28C7B4761D9F3B31009C772A /* Main.storyboard */,
 				28C7B4791D9F3B31009C772A /* Assets.xcassets */,
 				28C7B47B1D9F3B31009C772A /* LaunchScreen.storyboard */,
 				28C7B47E1D9F3B31009C772A /* Info.plist */,
 				28C7B4841D9F6420009C772A /* Zaim.swift */,
+				28C7B4741D9F3B31009C772A /* ViewController.swift */,
+				28C7B4861D9F69F0009C772A /* GenreSelecterViewController.swift */,
 			);
 			path = zaimInputter;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28C7B4851D9F6420009C772A /* Zaim.swift in Sources */,
+				28C7B4871D9F69F0009C772A /* GenreSelecterViewController.swift in Sources */,
 				28C7B4751D9F3B31009C772A /* ViewController.swift in Sources */,
 				28C7B4731D9F3B31009C772A /* AppDelegate.swift in Sources */,
 			);
