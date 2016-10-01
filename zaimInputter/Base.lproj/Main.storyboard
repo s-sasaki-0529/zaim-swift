@@ -629,6 +629,7 @@
                     </view>
                     <connections>
                         <outlet property="amountLabel" destination="NbV-mN-3PT" id="ajp-fl-z43"/>
+                        <outlet property="commentTextView" destination="j3i-CC-oQB" id="zIQ-LE-thj"/>
                         <outlet property="genreLabel" destination="LKG-5F-HpN" id="Cai-a5-Uu0"/>
                         <outlet property="placeLabel" destination="2VE-lW-c9k" id="MHB-i6-tNA"/>
                     </connections>
