@@ -28,6 +28,9 @@
                                         <variation key="widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="0.0" y="0.0" width="360" height="131"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="onTappedPlaceButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SOb-6a-xtA"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLH-fW-e6y">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -36,6 +39,9 @@
                                         <variation key="widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="0.0" y="131" width="360" height="131"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="onTappedPlaceButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Xn-bC-Xbo"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdP-ZU-Hvs">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -44,6 +50,9 @@
                                         <variation key="widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="0.0" y="262" width="360" height="130"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="onTappedPlaceButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gcf-W7-TT3"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPs-Ew-JeY">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -52,6 +61,9 @@
                                         <variation key="widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="0.0" y="392" width="360" height="131"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="onTappedPlaceButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wtt-Tu-3IY"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
