@@ -387,12 +387,15 @@
                                                 <state key="normal" title="GO">
                                                     <color key="titleColor" red="1" green="0.56583361166619361" blue="0.081893881410453062" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onTappedGoButton" destination="1Ea-6P-6Rc" eventType="touchUpInside" id="Xup-Ps-Ezl"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥2400" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgE-bk-V2a">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgE-bk-V2a">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -456,15 +459,18 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <segue destination="eVw-ln-Jy9" kind="show" identifier="inputcomment" id="5az-Hz-Z2j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nGR-tW-OK1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1678.5" y="391"/>
         </scene>
-        <!--View Controller-->
+        <!--Input Comment View Controller-->
         <scene sceneID="HZd-h0-S0U">
             <objects>
-                <viewController id="eVw-ln-Jy9" sceneMemberID="viewController">
+                <viewController id="eVw-ln-Jy9" customClass="InputCommentViewController" customModule="zaimInputter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3w2-Z8-R1w"/>
                         <viewControllerLayoutGuide type="bottom" id="b2q-IS-Rgp"/>
@@ -486,6 +492,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tue-f6-41x">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="戻る"/>
+                                <connections>
+                                    <action selector="onTappedBackButton" destination="eVw-ln-Jy9" eventType="touchUpInside" id="SR5-cl-hWH"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1z-T1-chR">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
