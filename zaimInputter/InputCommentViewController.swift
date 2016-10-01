@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 class InputCommentViewController: UIViewController {
   private let zaim: Zaim = (UIApplication.sharedApplication().delegate as! AppDelegate).zaim
   @IBOutlet weak var placeLabel: UILabel!
@@ -24,7 +25,13 @@ class InputCommentViewController: UIViewController {
   
   /* 登録 */
   @IBAction func onTappedSubmitButton() {
-    
+    zaim.comment = commentTextView.text!
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+    let delay = 1 * Double(NSEC_PER_SEC)
+    let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+    dispatch_after(time, dispatch_get_main_queue(), {
+      exit(0)
+    })
   }
   
   /* 戻る */
