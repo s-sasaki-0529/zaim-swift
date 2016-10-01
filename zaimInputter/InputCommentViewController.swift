@@ -8,7 +8,7 @@
 
 import UIKit
 import AudioToolbox
-class InputCommentViewController: UIViewController {
+class InputCommentViewController: UIViewController , UITextFieldDelegate {
   private let zaim: Zaim = (UIApplication.sharedApplication().delegate as! AppDelegate).zaim
   @IBOutlet weak var placeLabel: UILabel!
   @IBOutlet weak var genreLabel: UILabel!
@@ -20,7 +20,15 @@ class InputCommentViewController: UIViewController {
     placeLabel.text = zaim.place
     genreLabel.text = zaim.genre
     amountLabel.text = "¥" + String(zaim.amount)
+    commentTextView.delegate = self
     commentTextView.becomeFirstResponder()
+  }
+  
+  /*改行キー*/
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    onTappedSubmitButton()
+    return true
   }
   
   /* 登録 */
@@ -38,4 +46,5 @@ class InputCommentViewController: UIViewController {
   @IBAction func onTappedBackButton() {
     self.dismissViewControllerAnimated(true, completion: nil)
   }
+  
 }
