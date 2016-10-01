@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
+  private let zaim: Zaim = (UIApplication.sharedApplication().delegate as! AppDelegate).zaim
+  
   override func viewDidLoad() {
     super.viewDidLoad()
   }
