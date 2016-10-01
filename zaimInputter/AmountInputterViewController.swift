@@ -65,6 +65,7 @@ class AmountInputterViewController: UIViewController {
   
   /* GO */
   @IBAction func onTappedGoButton() {
+    zaim.amount = toInt()
     self.performSegueWithIdentifier("inputcomment", sender: self);
   }
   
