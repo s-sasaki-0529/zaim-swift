@@ -1,25 +1,517 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="zaimInputter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleAspectFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ubI-MB-zms">
+                                <rect key="frame" x="0.0" y="0.0" width="110" height="200"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMH-gs-lI7">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="コンビニ"/>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="360" height="131"/>
+                                        </variation>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLH-fW-e6y">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="イオン"/>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="131" width="360" height="131"/>
+                                        </variation>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdP-ZU-Hvs">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="ベルクス"/>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="262" width="360" height="130"/>
+                                        </variation>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPs-Ew-JeY">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="自動販売機"/>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="392" width="360" height="131"/>
+                                        </variation>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="MPs-Ew-JeY" firstAttribute="top" secondItem="JdP-ZU-Hvs" secondAttribute="bottom" id="MsO-Ym-jf0"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="MsO-Ym-jf0"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="77" width="360" height="523"/>
+                                    <mask key="constraints">
+                                        <include reference="MsO-Ym-jf0"/>
+                                    </mask>
+                                </variation>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Q1. どこで？" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Avc-ot-rE8">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Avc-ot-rE8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="6Xr-he-yx2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ubI-MB-zms" secondAttribute="trailing" id="6q4-RK-UpL"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ubI-MB-zms" secondAttribute="bottom" id="YEY-CM-p30"/>
+                            <constraint firstItem="Avc-ot-rE8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="eAw-vE-lAL"/>
+                            <constraint firstItem="ubI-MB-zms" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="jp5-zI-Nc8"/>
+                            <constraint firstItem="ubI-MB-zms" firstAttribute="top" secondItem="Avc-ot-rE8" secondAttribute="bottom" constant="16" id="mOe-0E-axG"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="ubI-MB-zms"/>
+                                <exclude reference="Avc-ot-rE8"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="6Xr-he-yx2"/>
+                                <exclude reference="eAw-vE-lAL"/>
+                                <exclude reference="6q4-RK-UpL"/>
+                                <exclude reference="jp5-zI-Nc8"/>
+                                <exclude reference="mOe-0E-axG"/>
+                                <exclude reference="YEY-CM-p30"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="ubI-MB-zms"/>
+                                <include reference="Avc-ot-rE8"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="6Xr-he-yx2"/>
+                                <include reference="eAw-vE-lAL"/>
+                                <include reference="6q4-RK-UpL"/>
+                                <include reference="jp5-zI-Nc8"/>
+                                <include reference="mOe-0E-axG"/>
+                                <include reference="YEY-CM-p30"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="324" y="388"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="GVb-dY-zlu">
+            <objects>
+                <viewController id="XIZ-5o-Yjv" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b3v-eu-gk1"/>
+                        <viewControllerLayoutGuide type="bottom" id="69n-mO-xCx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IeT-RZ-GIQ">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Q2. なにを？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQS-K5-HFy">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gCq-ZN-vt3">
+                                <rect key="frame" x="0.0" y="0.0" width="110" height="200"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ooq-bI-gpl">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="食料品"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1i-DD-yIv">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="朝ご飯"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vd-c7-Lcv">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="昼ご飯"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ur-yQ-YWQ">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="晩ご飯"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldq-4j-9pf">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="消耗品"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="3ur-yQ-YWQ" firstAttribute="top" secondItem="9vd-c7-Lcv" secondAttribute="bottom" id="Cmo-gR-FoT"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Cmo-gR-FoT"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Cmo-gR-FoT"/>
+                                    </mask>
+                                </variation>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfr-0D-o2V">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="戻る"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AQS-K5-HFy" firstAttribute="leading" secondItem="IeT-RZ-GIQ" secondAttribute="leadingMargin" id="8ta-FW-ejA"/>
+                            <constraint firstItem="69n-mO-xCx" firstAttribute="top" secondItem="gCq-ZN-vt3" secondAttribute="bottom" id="Sxw-bO-HkJ"/>
+                            <constraint firstItem="AQS-K5-HFy" firstAttribute="top" secondItem="b3v-eu-gk1" secondAttribute="bottom" id="X16-73-QUC"/>
+                            <constraint firstItem="hfr-0D-o2V" firstAttribute="trailing" secondItem="IeT-RZ-GIQ" secondAttribute="trailingMargin" id="YEL-Sr-fkC"/>
+                            <constraint firstItem="gCq-ZN-vt3" firstAttribute="leading" secondItem="IeT-RZ-GIQ" secondAttribute="leadingMargin" id="dOC-un-Ub6"/>
+                            <constraint firstItem="gCq-ZN-vt3" firstAttribute="top" secondItem="AQS-K5-HFy" secondAttribute="bottom" constant="8" id="l9E-NG-mAQ"/>
+                            <constraint firstItem="hfr-0D-o2V" firstAttribute="top" secondItem="b3v-eu-gk1" secondAttribute="bottom" constant="6" id="ldV-cK-OUC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gCq-ZN-vt3" secondAttribute="trailing" id="uvg-p1-ewb"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="AQS-K5-HFy"/>
+                                <exclude reference="gCq-ZN-vt3"/>
+                                <exclude reference="hfr-0D-o2V"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="8ta-FW-ejA"/>
+                                <exclude reference="X16-73-QUC"/>
+                                <exclude reference="dOC-un-Ub6"/>
+                                <exclude reference="l9E-NG-mAQ"/>
+                                <exclude reference="uvg-p1-ewb"/>
+                                <exclude reference="YEL-Sr-fkC"/>
+                                <exclude reference="ldV-cK-OUC"/>
+                                <exclude reference="Sxw-bO-HkJ"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="AQS-K5-HFy"/>
+                                <include reference="gCq-ZN-vt3"/>
+                                <include reference="hfr-0D-o2V"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="8ta-FW-ejA"/>
+                                <include reference="X16-73-QUC"/>
+                                <include reference="dOC-un-Ub6"/>
+                                <include reference="l9E-NG-mAQ"/>
+                                <include reference="uvg-p1-ewb"/>
+                                <include reference="YEL-Sr-fkC"/>
+                                <include reference="ldV-cK-OUC"/>
+                                <include reference="Sxw-bO-HkJ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PSw-9v-NbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1003.5" y="388"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5tG-hJ-qPc">
+            <objects>
+                <viewController id="1Ea-6P-6Rc" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hmO-C7-HyB"/>
+                        <viewControllerLayoutGuide type="bottom" id="i0h-yS-Iac"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dmH-cM-2ej">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Q3. いくら？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NE6-xc-tiY">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMx-Zl-jDD">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="戻る"/>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="nlH-pr-I7z">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="110"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="uGb-E7-tMI">
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="200"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBK-J5-OZY">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <state key="normal" title="7"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3W-7D-cCu">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <state key="normal" title="4"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6m-YZ-hG1">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <state key="normal" title="1"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usd-wl-1eh">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <state key="normal" title="÷2"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39E-L5-ZAU">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <state key="normal" title="←"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="uBT-ZM-bvn">
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="200"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tu2-NJ-DFF">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <state key="normal" title="8"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYf-aW-D6t">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <state key="normal" title="5"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ax-No-RcG">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <state key="normal" title="2"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m8o-JR-I2I">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <state key="normal" title="×1.08"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VY4-0T-OpH">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <state key="normal" title="C"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="uAi-V0-pHd">
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="200"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0wd-Gl-Vcv">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <state key="normal" title="9"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AqK-F2-zv7">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <state key="normal" title="6"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="moc-JZ-2jg">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <state key="normal" title="3"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X32-gk-7jb">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <state key="normal" title="0"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9h0-fD-KEx">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <state key="normal" title="GO">
+                                                    <color key="titleColor" red="1" green="0.56583361166619361" blue="0.081893881410453062" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥2400" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgE-bk-V2a">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="nlH-pr-I7z" secondAttribute="trailing" id="8U0-cO-7yl"/>
+                            <constraint firstItem="NE6-xc-tiY" firstAttribute="top" secondItem="hmO-C7-HyB" secondAttribute="bottom" id="JnQ-VS-RZ3"/>
+                            <constraint firstItem="CgE-bk-V2a" firstAttribute="leading" secondItem="dmH-cM-2ej" secondAttribute="leadingMargin" id="L2i-2p-SfD"/>
+                            <constraint firstItem="nlH-pr-I7z" firstAttribute="top" secondItem="NE6-xc-tiY" secondAttribute="bottom" constant="80" id="LuE-5W-v7J"/>
+                            <constraint firstItem="TMx-Zl-jDD" firstAttribute="trailing" secondItem="dmH-cM-2ej" secondAttribute="trailingMargin" id="SFq-4B-AGN"/>
+                            <constraint firstItem="NE6-xc-tiY" firstAttribute="leading" secondItem="dmH-cM-2ej" secondAttribute="leadingMargin" id="byN-EF-Bb9"/>
+                            <constraint firstItem="CgE-bk-V2a" firstAttribute="top" secondItem="NE6-xc-tiY" secondAttribute="bottom" constant="8" id="dhZ-TM-5ox"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CgE-bk-V2a" secondAttribute="trailing" id="eKL-lm-AOh"/>
+                            <constraint firstItem="TMx-Zl-jDD" firstAttribute="top" secondItem="hmO-C7-HyB" secondAttribute="bottom" constant="12" id="jgt-BH-5nk"/>
+                            <constraint firstItem="nlH-pr-I7z" firstAttribute="leading" secondItem="dmH-cM-2ej" secondAttribute="leadingMargin" id="opC-eh-KOx"/>
+                            <constraint firstItem="i0h-yS-Iac" firstAttribute="top" secondItem="nlH-pr-I7z" secondAttribute="bottom" id="owT-6c-3uZ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="NE6-xc-tiY"/>
+                                <exclude reference="TMx-Zl-jDD"/>
+                                <exclude reference="nlH-pr-I7z"/>
+                                <exclude reference="CgE-bk-V2a"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="JnQ-VS-RZ3"/>
+                                <exclude reference="byN-EF-Bb9"/>
+                                <exclude reference="L2i-2p-SfD"/>
+                                <exclude reference="dhZ-TM-5ox"/>
+                                <exclude reference="eKL-lm-AOh"/>
+                                <exclude reference="8U0-cO-7yl"/>
+                                <exclude reference="LuE-5W-v7J"/>
+                                <exclude reference="opC-eh-KOx"/>
+                                <exclude reference="SFq-4B-AGN"/>
+                                <exclude reference="jgt-BH-5nk"/>
+                                <exclude reference="owT-6c-3uZ"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="NE6-xc-tiY"/>
+                                <include reference="TMx-Zl-jDD"/>
+                                <include reference="nlH-pr-I7z"/>
+                                <include reference="CgE-bk-V2a"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="JnQ-VS-RZ3"/>
+                                <include reference="byN-EF-Bb9"/>
+                                <include reference="L2i-2p-SfD"/>
+                                <include reference="dhZ-TM-5ox"/>
+                                <include reference="eKL-lm-AOh"/>
+                                <include reference="8U0-cO-7yl"/>
+                                <include reference="LuE-5W-v7J"/>
+                                <include reference="opC-eh-KOx"/>
+                                <include reference="SFq-4B-AGN"/>
+                                <include reference="jgt-BH-5nk"/>
+                                <include reference="owT-6c-3uZ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nGR-tW-OK1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1678.5" y="391"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="HZd-h0-S0U">
+            <objects>
+                <viewController id="eVw-ln-Jy9" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3w2-Z8-R1w"/>
+                        <viewControllerLayoutGuide type="bottom" id="b2q-IS-Rgp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cv3-um-3FC">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Q4. 詳細" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAE-H9-Ao8">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j3i-CC-oQB">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tue-f6-41x">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="戻る"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1z-T1-chR">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="73"/>
+                                <state key="normal" title="登録"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Tue-f6-41x" firstAttribute="trailing" secondItem="cv3-um-3FC" secondAttribute="trailingMargin" id="J9h-eg-fA2"/>
+                            <constraint firstItem="MAE-H9-Ao8" firstAttribute="leading" secondItem="cv3-um-3FC" secondAttribute="leadingMargin" id="LXA-3X-8sC"/>
+                            <constraint firstItem="C1z-T1-chR" firstAttribute="trailing" secondItem="cv3-um-3FC" secondAttribute="trailingMargin" id="R22-7G-Iih"/>
+                            <constraint firstItem="j3i-CC-oQB" firstAttribute="trailing" secondItem="cv3-um-3FC" secondAttribute="trailingMargin" id="YYx-sw-Toc"/>
+                            <constraint firstItem="C1z-T1-chR" firstAttribute="leading" secondItem="cv3-um-3FC" secondAttribute="leadingMargin" id="al3-YL-QxL"/>
+                            <constraint firstItem="MAE-H9-Ao8" firstAttribute="top" secondItem="3w2-Z8-R1w" secondAttribute="bottom" constant="8" id="bcf-Ah-0dT"/>
+                            <constraint firstItem="Tue-f6-41x" firstAttribute="top" secondItem="3w2-Z8-R1w" secondAttribute="bottom" constant="19" id="lM2-un-Eol"/>
+                            <constraint firstItem="j3i-CC-oQB" firstAttribute="top" secondItem="MAE-H9-Ao8" secondAttribute="bottom" constant="8" id="rYh-VW-4XH"/>
+                            <constraint firstItem="C1z-T1-chR" firstAttribute="top" secondItem="j3i-CC-oQB" secondAttribute="bottom" constant="8" id="t6O-F4-ucR"/>
+                            <constraint firstItem="j3i-CC-oQB" firstAttribute="leading" secondItem="cv3-um-3FC" secondAttribute="leadingMargin" id="xwv-Y2-19O"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="MAE-H9-Ao8"/>
+                                <exclude reference="j3i-CC-oQB"/>
+                                <exclude reference="Tue-f6-41x"/>
+                                <exclude reference="C1z-T1-chR"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="LXA-3X-8sC"/>
+                                <exclude reference="bcf-Ah-0dT"/>
+                                <exclude reference="YYx-sw-Toc"/>
+                                <exclude reference="rYh-VW-4XH"/>
+                                <exclude reference="xwv-Y2-19O"/>
+                                <exclude reference="R22-7G-Iih"/>
+                                <exclude reference="al3-YL-QxL"/>
+                                <exclude reference="t6O-F4-ucR"/>
+                                <exclude reference="J9h-eg-fA2"/>
+                                <exclude reference="lM2-un-Eol"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="MAE-H9-Ao8"/>
+                                <include reference="j3i-CC-oQB"/>
+                                <include reference="Tue-f6-41x"/>
+                                <include reference="C1z-T1-chR"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="LXA-3X-8sC"/>
+                                <include reference="bcf-Ah-0dT"/>
+                                <include reference="YYx-sw-Toc"/>
+                                <include reference="rYh-VW-4XH"/>
+                                <include reference="xwv-Y2-19O"/>
+                                <include reference="R22-7G-Iih"/>
+                                <include reference="al3-YL-QxL"/>
+                                <include reference="t6O-F4-ucR"/>
+                                <include reference="J9h-eg-fA2"/>
+                                <include reference="lM2-un-Eol"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QZw-bH-lCk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2371.5" y="389"/>
         </scene>
     </scenes>
 </document>
