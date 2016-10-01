@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2835E8741DA02AB2007B742E /* keys.json in Resources */ = {isa = PBXBuildFile; fileRef = 2835E8721DA02906007B742E /* keys.json */; };
 		28C7B4731D9F3B31009C772A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C7B4721D9F3B31009C772A /* AppDelegate.swift */; };
 		28C7B4751D9F3B31009C772A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C7B4741D9F3B31009C772A /* ViewController.swift */; };
 		28C7B4781D9F3B31009C772A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28C7B4761D9F3B31009C772A /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2835E8721DA02906007B742E /* keys.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = keys.json; sourceTree = "<group>"; };
 		28C7B46F1D9F3B31009C772A /* zaimInputter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zaimInputter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C7B4721D9F3B31009C772A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28C7B4741D9F3B31009C772A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 		28C7B4711D9F3B31009C772A /* zaimInputter */ = {
 			isa = PBXGroup;
 			children = (
+				2835E8721DA02906007B742E /* keys.json */,
 				28C7B4721D9F3B31009C772A /* AppDelegate.swift */,
 				28C7B4761D9F3B31009C772A /* Main.storyboard */,
 				28C7B4791D9F3B31009C772A /* Assets.xcassets */,
@@ -162,6 +165,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2835E8741DA02AB2007B742E /* keys.json in Resources */,
 				28C7B47D1D9F3B31009C772A /* LaunchScreen.storyboard in Resources */,
 				28C7B47A1D9F3B31009C772A /* Assets.xcassets in Resources */,
 				28C7B4781D9F3B31009C772A /* Main.storyboard in Resources */,

@@ -17,10 +17,9 @@ class Zaim {
   var genre: String = "";
   
   init () {
-    
   }
   
-  internal func genreToID () -> String {
+  private func genreToID () -> String {
     let genreToID = [
       "食料品": "10101" ,
       "朝ご飯": "10103" ,
@@ -29,6 +28,18 @@ class Zaim {
       "消耗品": "10201"
     ]
     return genreToID[self.genre]!
+  }
+  
+  internal func loadOAuthKeys () -> Dictionary<String,String> {
+    let path = NSBundle.mainBundle().pathForResource("keys", ofType: "json")!
+    let jsonData = NSData(contentsOfFile: path)!
+    do {
+      let json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: .MutableContainers) as! Dictionary<String , String>
+      return json
+    } catch let err as NSError {
+      print(err.localizedDescription)
+    }
+    return Dictionary<String,String>()
   }
   
 }
