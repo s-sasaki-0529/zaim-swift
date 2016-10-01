@@ -11,14 +11,23 @@ import OAuthSwift
 
 class Zaim {
   
+  let SITE_URL = "https://api.zaim.net";
+  let API_URL = "https://api.zaim.net/v2/";
+  let REQUEST_TOKEN_PATH = "/v2/auth/request";
+  let AUTHORIZE_URL = "https://auth.zaim.net/users/auth";
+  let ACCESS_TOKEN_PATH = "https://api.zaim.net";
+  
   var place: String = "";
   var amount: Int = 0;
   var comment: String = "";
   var genre: String = "";
   
+  /* インスタンス生成時に、OAuth認証を行う
+   */
   init () {
   }
   
+  /* ジャンル名をgenreIDに変換する */
   private func genreToID () -> String {
     let genreToID = [
       "食料品": "10101" ,
@@ -30,7 +39,8 @@ class Zaim {
     return genreToID[self.genre]!
   }
   
-  internal func loadOAuthKeys () -> Dictionary<String,String> {
+  /* OAuth認証用の情報をローカルファイルから取得 */
+  private func loadOAuthKeys () -> Dictionary<String,String> {
     let path = NSBundle.mainBundle().pathForResource("keys", ofType: "json")!
     let jsonData = NSData(contentsOfFile: path)!
     do {
