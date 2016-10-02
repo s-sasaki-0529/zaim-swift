@@ -21,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		280D33101DA0C0D4000B6AC2 /* zaimInputter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "zaimInputter-Bridging-Header.h"; path = "zaimInputter/zaimInputter-Bridging-Header.h"; sourceTree = "<group>"; };
 		2835E8721DA02906007B742E /* keys.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = keys.json; sourceTree = "<group>"; };
 		28C7B46F1D9F3B31009C772A /* zaimInputter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zaimInputter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C7B4721D9F3B31009C772A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +54,7 @@
 		28C7B4661D9F3B31009C772A = {
 			isa = PBXGroup;
 			children = (
+				280D33101DA0C0D4000B6AC2 /* zaimInputter-Bridging-Header.h */,
 				28C7B4711D9F3B31009C772A /* zaimInputter */,
 				28C7B4701D9F3B31009C772A /* Products */,
 				B0BE76983D619FCCBA1F8D87 /* Pods */,
@@ -299,6 +301,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "zaimInputter/zaimInputter-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -338,6 +341,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "zaimInputter/zaimInputter-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
