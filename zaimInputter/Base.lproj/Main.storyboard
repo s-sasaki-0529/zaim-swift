@@ -26,9 +26,6 @@
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="コンビニ"/>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="360" height="131"/>
-                                        </variation>
                                         <connections>
                                             <action selector="onTappedPlaceButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SOb-6a-xtA"/>
                                         </connections>
@@ -37,9 +34,6 @@
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="イオン"/>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="131" width="360" height="131"/>
-                                        </variation>
                                         <connections>
                                             <action selector="onTappedPlaceButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Xn-bC-Xbo"/>
                                         </connections>
@@ -48,9 +42,6 @@
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="ベルクス"/>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="262" width="360" height="130"/>
-                                        </variation>
                                         <connections>
                                             <action selector="onTappedPlaceButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gcf-W7-TT3"/>
                                         </connections>
@@ -59,9 +50,6 @@
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="自動販売機"/>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="392" width="360" height="131"/>
-                                        </variation>
                                         <connections>
                                             <action selector="onTappedPlaceButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wtt-Tu-3IY"/>
                                         </connections>
@@ -75,8 +63,7 @@
                                         <exclude reference="MsO-Ym-jf0"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="20" y="77" width="360" height="523"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="MsO-Ym-jf0"/>
                                     </mask>
