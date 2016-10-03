@@ -26,13 +26,24 @@ class Zaim {
   
   /* インスタンス生成時に、OAuth認証を行う */
   init () {
-    let url = "https://api.zaim.net/v2/home/money/income"
+    /*let url = "https://api.zaim.net/v2/home/money/income"
     let method = "POST"
     var params = Dictionary<String , String>()
     params["income_category_id"] = "11"
     params["date"] = "2016-10-03"
     params["amount"] = "1000"
-    
+    */
+    let url = "https://api.zaim.net/v2/home/user/verify"
+    let method = "GET"
+    var params = Dictionary<String , String>()
+    /*
+    let url = "http://example.com/sample.php"
+    let method = "POST"
+    var params = Dictionary<String , String>()
+    params["title"] = "AAA"
+    params["name"] = "BBB"
+    params["text"] = "CCC"
+    */
     sendOAuthRequest(method, url: url, parameters: params)
   }
   
@@ -57,8 +68,8 @@ class Zaim {
     request.HTTPMethod = method
     request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData
     
-    let p = urlEncodedQueryStringWithEncoding(parameters)
-    request.HTTPBody = p.dataUsingEncoding(dataEncoding)
+    //let p = urlEncodedQueryStringWithEncoding(parameters)
+    //request.HTTPBody = p.dataUsingEncoding(dataEncoding)
 
     // リクエストパラメータ準備
     var param = Dictionary<String, String>()
@@ -69,7 +80,7 @@ class Zaim {
     param["oauth_timestamp"] = String(Int64(NSDate().timeIntervalSince1970))
     param["oauth_nonce"] = (NSUUID().UUIDString as NSString).substringToIndex(8)
     //param["oauth_callback"] = "oauth-swift://"
-    param["oauth_signature"] = self.oauthSignatureForMethod(method , url: requestURL, parameters: parameters)
+    param["oauth_signature"] = self.oauthSignatureForMethod(method , url: requestURL, parameters: param)
     param["oauth_token"] = oauthKeys["access_token"]!
     
     // リクエストパラメータをアルファベット順に並べ替える
@@ -86,7 +97,7 @@ class Zaim {
     }
     
     // リクエストヘッダにリクエスト文字列を付与
-    request.setValue("OAuth " + headerComponents.joinWithSeparator(", "), forHTTPHeaderField: "Authorization")
+    request.setValue("OAuth " + headerComponents.joinWithSeparator(","), forHTTPHeaderField: "Authorization")
     //request.setValue(oauthKeys["access_token"]!, forHTTPHeaderField: "access_token")
     
     // リクエストを送信
