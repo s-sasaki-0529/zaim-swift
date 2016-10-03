@@ -23,10 +23,8 @@ class Zaim {
   var comment: String = "";
   var genre: String = "";
   
-  /* インスタンス生成時に、OAuth認証を行う
-   */
+  /* インスタンス生成時に、OAuth認証を行う */
   init () {
-    print(generateSignature())
   }
   
   /* ジャンル名をgenreIDに変換する */
@@ -41,19 +39,6 @@ class Zaim {
     return genreToID[self.genre]!
   }
   
-  /* OAuth認証に必要なHTTPヘッダを生成 */
-  private func createHeader () {
-    let oauthKeys = loadOAuthKeys()
-    var headers = Dictionary<String,String>()
-    headers["oauth_consumer_key"] = oauthKeys["key"]
-    headers["oauth_token"] = oauthKeys["access_token"]
-    headers["auth_signature_method"] = "HMAC-SHA1"
-    headers["oauth_signature"] = "hoge"
-    headers["oauth_timestamp"] = String(Int(NSDate().timeIntervalSince1970))
-    headers["oauth_nonce"] = generateRandomString(32)
-    print(headers)
-  }
-  
   /* OAuth認証用の情報をローカルファイルから取得 */
   private func loadOAuthKeys () -> Dictionary<String,String> {
     let path = NSBundle.mainBundle().pathForResource("keys", ofType: "json")!
@@ -65,55 +50,6 @@ class Zaim {
       print(err.localizedDescription)
     }
     return Dictionary<String,String>()
-  }
-  
-  /* OAuthに必要な署名を生成する  */
-  private func generateSignature () -> String {
-    let oauthKeys = loadOAuthKeys()
-    let url = urlEncode("http://example.com/sample.php")
-    let method = "POST"
-    let param = urlEncode("name=BBB&text=CCC&title=AAA")
-    let signatureKey = oauthKeys["secret"]! + "&" + oauthKeys["access_token_secret"]!
-    let data = [method , url , param].joinWithSeparator("&")
-    let hash = SHA1DigestWithKey(data, key: signatureKey).base64EncodedStringWithOptions(NSDataBase64EncodingOptions())
-    return hash
-  }
-  
-  /* ランダムな文字列を生成 */
-  func generateRandomString(length: Int) -> String {
-    let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-    var randomString: String = ""
-    
-    for _ in 0..<length {
-      let randomValue = arc4random_uniform(UInt32(base.characters.count))
-      randomString += "\(base[base.startIndex.advancedBy(Int(randomValue))])"
-    }
-    return randomString
-  }
-  
-  /* URLエンコードする */
-  func urlEncode(str: String) -> String {
-    let charactersToBeEscaped = ":/?&=;+!@#$()',*" as CFStringRef
-    let charactersToLeaveUnescaped = "[]." as CFStringRef
-    
-    let raw: NSString = str
-    
-    let result = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, raw, charactersToLeaveUnescaped, charactersToBeEscaped, CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)) as NSString
-    
-    return result as String
-  }
-  
-  /* SHA1署名のハッシュ値を作成 */
-  func SHA1DigestWithKey(base: String, key: String) -> NSData {
-    let str = base.cStringUsingEncoding(NSUTF8StringEncoding)
-    let strLen = Int(base.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
-    let digestLen = Int(CC_SHA1_DIGEST_LENGTH)
-    let result = UnsafeMutablePointer<CUnsignedChar>.alloc(digestLen)
-    let keyStr = key.cStringUsingEncoding(NSUTF8StringEncoding)
-    let keyLen = Int(key.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
-    
-    CCHmac(CCHmacAlgorithm(kCCHmacAlgSHA1), keyStr!, keyLen, str!, strLen, result)
-    return NSData(bytes: result, length: digestLen)
   }
   
   
