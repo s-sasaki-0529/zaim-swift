@@ -29,10 +29,10 @@ class Zaim {
     let url = "https://api.zaim.net/v2/home/money/income"
     let method = "POST"
     var params = Dictionary<String , String>()
-    params["category_id"] = "11"
-    params["date"] = "2016-10-03"
-    params["amount"] = "1000"
-    params["comment"] = "できたああああああ"
+    params["category_id"] = "12"
+    params["date"] = "2016-10-02"
+    params["amount"] = "5000"
+    params["comment"] = "おっほっほー"
     sendOAuthRequest(method, url: url, postParameters: params)
   }
   
@@ -62,25 +62,18 @@ class Zaim {
     request.HTTPBody = p.dataUsingEncoding(dataEncoding)
 
     // リクエストパラメータ準備
-    var param = Dictionary<String, String>()
+    var oauthParams = Dictionary<String, String>()
     let oauthKeys = loadOAuthKeys()
-    param["oauth_version"] = "1.0"
-    param["oauth_signature_method"] = "HMAC-SHA1"
-    param["oauth_consumer_key"] = oauthKeys["key"]!
-    param["oauth_timestamp"] = String(Int64(NSDate().timeIntervalSince1970))
-    param["oauth_nonce"] = (NSUUID().UUIDString as NSString).substringToIndex(8)
-    param["oauth_token"] = oauthKeys["access_token"]!
-    
-    var meargeParams = param
-    meargeParams["category_id"] = "11"
-    meargeParams["amount"] = "1000"
-    meargeParams["date"] = "2016-10-03"
-    meargeParams["comment"] = "できたああああああ"
-    
-    param["oauth_signature"] = self.oauthSignatureForMethod(method , url: requestURL, parameters: meargeParams)
+    oauthParams["oauth_version"] = "1.0"
+    oauthParams["oauth_signature_method"] = "HMAC-SHA1"
+    oauthParams["oauth_consumer_key"] = oauthKeys["key"]!
+    oauthParams["oauth_timestamp"] = String(Int64(NSDate().timeIntervalSince1970))
+    oauthParams["oauth_nonce"] = (NSUUID().UUIDString as NSString).substringToIndex(8)
+    oauthParams["oauth_token"] = oauthKeys["access_token"]!
+    oauthParams["oauth_signature"] = oauthSignatureForMethod(method , url: requestURL, oauthParams: oauthParams, postParams: postParameters)
     
     // リクエストパラメータをアルファベット順に並べ替える
-    var authorizationParameterComponents = urlEncodedQueryStringWithEncoding(param).componentsSeparatedByString("&") as [String]
+    var authorizationParameterComponents = urlEncodedQueryStringWithEncoding(oauthParams).componentsSeparatedByString("&") as [String]
     authorizationParameterComponents.sortInPlace { $0 < $1 }
     
     // リクエストパラメータを元に、リクエスト文字列作成
@@ -111,12 +104,18 @@ class Zaim {
   }
   
   /* signature作成 */
-  private func oauthSignatureForMethod(method: String, url: NSURL, parameters: Dictionary<String, String>) -> String {
+  private func oauthSignatureForMethod(method: String, url: NSURL, oauthParams: Dictionary<String, String> , postParams: Dictionary<String, String>) -> String {
+    
     let oauthKeys = loadOAuthKeys()
     let signingKey : String = "\(oauthKeys["secret"]!)&\(oauthKeys["access_token_secret"]!)"
     
+    var meargeParams = oauthParams
+    for (key , value) in postParams {
+      meargeParams[key] = value
+    }
+    
     // パラメータ取得してソート
-    var parameterComponents = urlEncodedQueryStringWithEncoding(parameters).componentsSeparatedByString("&") as [String]
+    var parameterComponents = urlEncodedQueryStringWithEncoding(meargeParams).componentsSeparatedByString("&") as [String]
     parameterComponents.sortInPlace { $0 < $1 }
     
     // query string作成
