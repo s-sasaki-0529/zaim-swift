@@ -33,6 +33,7 @@ class Zaim {
     params["date"] = "2016-10-03"
     params["amount"] = "1000"
     */
+    
     let url = "https://api.zaim.net/v2/home/user/verify"
     let method = "GET"
     var params = Dictionary<String , String>()
@@ -80,8 +81,8 @@ class Zaim {
     param["oauth_timestamp"] = String(Int64(NSDate().timeIntervalSince1970))
     param["oauth_nonce"] = (NSUUID().UUIDString as NSString).substringToIndex(8)
     //param["oauth_callback"] = "oauth-swift://"
-    param["oauth_signature"] = self.oauthSignatureForMethod(method , url: requestURL, parameters: param)
     param["oauth_token"] = oauthKeys["access_token"]!
+    param["oauth_signature"] = self.oauthSignatureForMethod(method , url: requestURL, parameters: param)
     
     // リクエストパラメータをアルファベット順に並べ替える
     var authorizationParameterComponents = urlEncodedQueryStringWithEncoding(param).componentsSeparatedByString("&") as [String]
