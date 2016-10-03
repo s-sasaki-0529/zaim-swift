@@ -22,14 +22,23 @@ class Zaim {
   
   /* インスタンス生成時に、OAuth認証を行う */
   init () {
-    let url = API_URL + "home/money/income"
-    let method = "POST"
+    createIncomeData("11", date: "2016-10-20", amount: 3000, comment: "てすと〜")
+  }
+  
+  /* 収入データを登録 */
+  internal func createIncomeData(category_id: String , date: String , amount: Int , comment: String) {
+    let url = "home/money/income"
     var params = Dictionary<String , String>()
-    params["category_id"] = "12"
-    params["date"] = "2016-10-02"
-    params["amount"] = "5000"
-    params["comment"] = "おっほっほー"
-    sendOAuthRequest(method, url: url, postParameters: params)
+    params["category_id"] = category_id
+    params["date"] = date
+    params["amount"] = String(amount)
+    params["comment"] = comment
+    post(url , params: params)
+  }
+  
+  /* POST */
+  private func post (url: String , params: Dictionary<String, String>) {
+    sendOAuthRequest("POST", url: API_URL + url, postParameters: params)
   }
   
   /* ジャンル名をgenreIDに変換する */
