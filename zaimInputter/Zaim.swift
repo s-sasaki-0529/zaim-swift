@@ -17,6 +17,7 @@ class Zaim {
   let REQUEST_TOKEN_PATH = "/v2/auth/request";
   let AUTHORIZE_URL = "https://auth.zaim.net/users/auth";
   let ACCESS_TOKEN_PATH = "https://api.zaim.net";
+  let dataEncoding: NSStringEncoding = NSUTF8StringEncoding
   
   var place: String = "";
   var amount: Int = 0;
@@ -50,6 +51,20 @@ class Zaim {
       print(err.localizedDescription)
     }
     return Dictionary<String,String>()
+  }
+  
+  /* SHA1署名のハッシュ値を作成 */
+  private func SHA1DigestWithKey(base: String, key: String) -> NSData {
+    let str = base.cStringUsingEncoding(dataEncoding)
+    let strLen = Int(base.lengthOfBytesUsingEncoding(dataEncoding))
+    let digestLen = Int(CC_SHA1_DIGEST_LENGTH)
+    let result = UnsafeMutablePointer<CUnsignedChar>.alloc(digestLen)
+    let keyStr = key.cStringUsingEncoding(NSUTF8StringEncoding)
+    let keyLen = Int(key.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
+    
+    CCHmac(CCHmacAlgorithm(kCCHmacAlgSHA1), keyStr!, keyLen, str!, strLen, result)
+    
+    return NSData(bytes: result, length: digestLen)
   }
   
   
