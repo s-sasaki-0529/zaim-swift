@@ -26,6 +26,12 @@ class Zaim {
   
   /* インスタンス生成時に、OAuth認証を行う */
   init () {
+    let url = "https://api.zaim.net/v2/home/money"
+    let method = "GET"
+    var params = Dictionary<String , String>()
+    params["start_date"] = "2016-09-15"
+    params["end_date"] = "2016-10-01"
+    sendOAuthRequest(method, url: url, parameters: params)
   }
   
   /* ジャンル名をgenreIDに変換する */
@@ -40,10 +46,62 @@ class Zaim {
     return genreToID[self.genre]!
   }
   
+  /* OAuthパラメータを生成し、リクエストを送信する */
+  func sendOAuthRequest(method: String , url: String , parameters: Dictionary<String , String>) {
+    
+    // リクエスト準備
+    let requestURL = NSURL(string: url)!
+    let request : NSMutableURLRequest = NSMutableURLRequest(URL: requestURL);
+    request.HTTPMethod = method
+    request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData
+    
+    // リクエストパラメータ準備
+    var param = Dictionary<String, String>()
+    let oauthKeys = loadOAuthKeys()
+    param["oauth_version"] = "1.0"
+    param["oauth_signature_method"] = "HMAC-SHA1"
+    param["oauth_consumer_key"] = oauthKeys["key"]
+    param["oauth_timestamp"] = String(Int64(NSDate().timeIntervalSince1970))
+    param["oauth_nonce"] = (NSUUID().UUIDString as NSString).substringToIndex(8)
+    param["oauth_callback"] = "oauth-swift://"
+    param["oauth_signature"] = self.oauthSignatureForMethod(method , url: requestURL, parameters: param)
+    
+    // リクエストパラメータをアルファベット順に並べ替える
+    var authorizationParameterComponents = urlEncodedQueryStringWithEncoding(param).componentsSeparatedByString("&") as [String]
+    authorizationParameterComponents.sortInPlace { $0 < $1 }
+    
+    // リクエストパラメータを元に、リクエスト文字列作成
+    var headerComponents = [String]()
+    for component in authorizationParameterComponents {
+      let subcomponent = component.componentsSeparatedByString("=") as [String]
+      if subcomponent.count == 2 {
+        headerComponents.append("\(subcomponent[0])=\"\(subcomponent[1])\"")
+      }
+    }
+    
+    // リクエストヘッダにリクエスト文字列を付与
+    request.setValue("OAuth " + headerComponents.joinWithSeparator(", "), forHTTPHeaderField: "Authorization")
+
+    // リクエストを送信
+    NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()){
+      
+      response, data, error in
+      
+      if(error != nil){
+        // エラー文言表示
+        print("えらーだよ")
+        print(error!.description)
+      }
+      // oauth_token表示
+      print(NSString(data: data!, encoding: self.dataEncoding)!)
+    }
+    
+  }
+  
   /* signature作成 */
   func oauthSignatureForMethod(method: String, url: NSURL, parameters: Dictionary<String, String>) -> String {
     let oauthKeys = loadOAuthKeys()
-    let signingKey : String = "\(oauthKeys["secret"])&\(oauthKeys["access_token_secret"])"
+    let signingKey : String = "\(oauthKeys["secret"]!)&\(oauthKeys["access_token_secret"]!)"
     let signingKeyData = signingKey.dataUsingEncoding(dataEncoding)
     
     // パラメータ取得してソート
