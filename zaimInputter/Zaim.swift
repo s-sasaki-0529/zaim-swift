@@ -16,7 +16,7 @@ class Zaim {
   }
   
   /* 支出データを登録 */
-  internal func createPaymentData(genreName: String , place: String , amount: Int , comment: String) {
+  internal func createPaymentData(genreName: String , place: String , amount: Int , comment: String) -> Bool {
     let url = "home/money/payment"
     var params = Dictionary<String , String>()
     params["category_id"] = genreToCategoryID(genreName)
@@ -24,23 +24,23 @@ class Zaim {
     params["place"] = place
     params["amount"] = String(amount)
     params["comment"] = comment
-    post(url , params:params)
+    return post(url , params:params)
   }
   
   /* 収入データを登録 */
-  internal func createIncomeData(category_id: String , date: String , amount: Int , comment: String) {
+  internal func createIncomeData(category_id: String , date: String , amount: Int , comment: String) -> Bool{
     let url = "home/money/income"
     var params = Dictionary<String , String>()
     params["category_id"] = category_id
     params["date"] = date
     params["amount"] = String(amount)
     params["comment"] = comment
-    post(url , params: params)
+    return post(url , params: params)
   }
   
   /* POST */
-  private func post (url: String , params: Dictionary<String, String>) {
-    oauth.sendOAuthRequest("POST", url: API_URL + url, postParameters: params)
+  private func post (url: String , params: Dictionary<String, String>) -> Bool {
+    return oauth.sendOAuthRequest("POST", url: API_URL + url, postParameters: params)
   }
   
   /* ジャンル名をgenreIDに変換する */
@@ -59,7 +59,7 @@ class Zaim {
   private func genreToCategoryID(genreName: String) -> String {
     let genreIdMap = [
       "食料品": "101" ,
-      "朝ごはん": "101" ,
+      "朝ご飯": "101" ,
       "昼ご飯": "101" ,
       "晩ご飯": "101" ,
       "消耗品": "102"

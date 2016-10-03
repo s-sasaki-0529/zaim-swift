@@ -5,7 +5,7 @@ class OAuthSwift {
   let dataEncoding: NSStringEncoding = NSUTF8StringEncoding
   
   /* OAuthパラメータを生成し、リクエストを送信する */
-  internal func sendOAuthRequest(method: String , url: String , postParameters: Dictionary<String , String>) {
+  internal func sendOAuthRequest(method: String , url: String , postParameters: Dictionary<String , String>) -> Bool {
     
     // リクエスト準備
     let requestURL = NSURL(string: url)!
@@ -43,19 +43,23 @@ class OAuthSwift {
     // リクエストヘッダにリクエスト文字列を付与
     request.setValue("OAuth " + headerComponents.joinWithSeparator(","), forHTTPHeaderField: "Authorization")
     
-    // リクエストを送信
-    NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()){
-      
-      response, data, error in
-      
-      if(error != nil){
-        // エラー文言表示
-        print(error!.description)
+    // リクエストを送信(強制的に同期処理にする)
+    let session = NSURLSession.sharedSession()
+    var result: Bool = false
+    let semaphore = dispatch_semaphore_create(0)
+    let task = session.dataTaskWithRequest(request) { data , response , error in
+      if data != nil && response != nil {
+        print(response)
+        result = true
+      } else {
+        print(error)
       }
-      // oauth_token表示
-      print(NSString(data: data!, encoding: self.dataEncoding)!)
+      dispatch_semaphore_signal(semaphore)
     }
-    
+    task.resume()
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+    print(result)
+    return result
   }
   
   /* signature作成 */
