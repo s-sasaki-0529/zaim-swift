@@ -13,7 +13,6 @@ class Zaim {
   
   /* インスタンス生成時に、OAuth認証を行う */
   init () {
-    createIncomeData("11", date: "2016-10-20", amount: 3000, comment: "分離")
   }
   
   /* 収入データを登録 */
