@@ -33,19 +33,6 @@ class Zaim {
     params["date"] = "2016-10-03"
     params["amount"] = "1000"
     params["comment"] = "できたああああああ"
-    /*
-    let url = "https://api.zaim.net/v2/home/user/verify"
-    let method = "GET"
-    var params = Dictionary<String , String>()
-    */
-    /*
-    let url = "http://example.com/sample.php"
-    let method = "POST"
-    var params = Dictionary<String , String>()
-    params["title"] = "AAA"
-    params["name"] = "BBB"
-    params["text"] = "CCC"
-    */
     sendOAuthRequest(method, url: url, postParameters: params)
   }
   
@@ -81,7 +68,6 @@ class Zaim {
     param["oauth_consumer_key"] = oauthKeys["key"]!
     param["oauth_timestamp"] = String(Int64(NSDate().timeIntervalSince1970))
     param["oauth_nonce"] = (NSUUID().UUIDString as NSString).substringToIndex(8)
-    //param["oauth_callback"] = "oauth-swift://"
     param["oauth_token"] = oauthKeys["access_token"]!
     
     var meargeParams = param
@@ -107,7 +93,6 @@ class Zaim {
     
     // リクエストヘッダにリクエスト文字列を付与
     request.setValue("OAuth " + headerComponents.joinWithSeparator(","), forHTTPHeaderField: "Authorization")
-    //request.setValue(oauthKeys["access_token"]!, forHTTPHeaderField: "access_token")
     
     // リクエストを送信
     NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()){
@@ -116,11 +101,9 @@ class Zaim {
       
       if(error != nil){
         // エラー文言表示
-        print("えらーだよ")
         print(error!.description)
       }
       // oauth_token表示
-      print("以下トークン")
       print(NSString(data: data!, encoding: self.dataEncoding)!)
     }
     
@@ -130,7 +113,6 @@ class Zaim {
   func oauthSignatureForMethod(method: String, url: NSURL, parameters: Dictionary<String, String>) -> String {
     let oauthKeys = loadOAuthKeys()
     let signingKey : String = "\(oauthKeys["secret"]!)&\(oauthKeys["access_token_secret"]!)"
-    //let signingKeyData = signingKey.dataUsingEncoding(dataEncoding)
     
     // パラメータ取得してソート
     var parameterComponents = urlEncodedQueryStringWithEncoding(parameters).componentsSeparatedByString("&") as [String]
@@ -146,7 +128,7 @@ class Zaim {
     
     // signature用ベース文字列作成
     let signatureBaseString = "\(method)&\(encodedURL)&\(encodedParameterString)"
-    //let signatureBaseStringData = signatureBaseString.dataUsingEncoding(dataEncoding)
+    
     
     // signature作成
     return SHA1DigestWithKey(signatureBaseString, key: signingKey).base64EncodedStringWithOptions(NSDataBase64EncodingOptions())
