@@ -40,6 +40,32 @@ class Zaim {
     return genreToID[self.genre]!
   }
   
+  /* signature作成 */
+  func oauthSignatureForMethod(method: String, url: NSURL, parameters: Dictionary<String, String>) -> String {
+    let oauthKeys = loadOAuthKeys()
+    let signingKey : String = "\(oauthKeys["secret"])&\(oauthKeys["access_token_secret"])"
+    let signingKeyData = signingKey.dataUsingEncoding(dataEncoding)
+    
+    // パラメータ取得してソート
+    var parameterComponents = urlEncodedQueryStringWithEncoding(parameters).componentsSeparatedByString("&") as [String]
+    parameterComponents.sortInPlace { $0 < $1 }
+    
+    // query string作成
+    let parameterString = parameterComponents.joinWithSeparator("&")
+    
+    // urlエンコード
+    let encodedParameterString = urlEncode(parameterString)
+    
+    let encodedURL = urlEncode(url.absoluteString)
+    
+    // signature用ベース文字列作成
+    let signatureBaseString = "\(method)&\(encodedURL)&\(encodedParameterString)"
+    let signatureBaseStringData = signatureBaseString.dataUsingEncoding(dataEncoding)
+    
+    // signature作成
+    return SHA1DigestWithKey(signatureBaseString, key: signingKey).base64EncodedStringWithOptions(NSDataBase64EncodingOptions())
+  }
+  
   /* OAuth認証用の情報をローカルファイルから取得 */
   private func loadOAuthKeys () -> Dictionary<String,String> {
     let path = NSBundle.mainBundle().pathForResource("keys", ofType: "json")!
