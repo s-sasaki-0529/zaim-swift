@@ -26,12 +26,13 @@ class Zaim {
   
   /* インスタンス生成時に、OAuth認証を行う */
   init () {
-    let url = "https://api.zaim.net/v2/home/money"
-    let method = "GET"
+    let url = "https://api.zaim.net/v2/home/money/income"
+    let method = "POST"
     var params = Dictionary<String , String>()
-    params["start_date"] = "2016-09-15"
-    params["end_date"] = "2016-10-01"
-
+    params["income_category_id"] = "11"
+    params["date"] = "2016-10-03"
+    params["amount"] = "1000"
+    
     sendOAuthRequest(method, url: url, parameters: params)
   }
   
@@ -56,6 +57,9 @@ class Zaim {
     request.HTTPMethod = method
     request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData
     
+    let p = urlEncodedQueryStringWithEncoding(parameters)
+    request.HTTPBody = p.dataUsingEncoding(dataEncoding)
+
     // リクエストパラメータ準備
     var param = Dictionary<String, String>()
     let oauthKeys = loadOAuthKeys()
@@ -64,9 +68,10 @@ class Zaim {
     param["oauth_consumer_key"] = oauthKeys["key"]!
     param["oauth_timestamp"] = String(Int64(NSDate().timeIntervalSince1970))
     param["oauth_nonce"] = (NSUUID().UUIDString as NSString).substringToIndex(8)
-    param["oauth_callback"] = "oauth-swift://"
+    //param["oauth_callback"] = "oauth-swift://"
     param["oauth_signature"] = self.oauthSignatureForMethod(method , url: requestURL, parameters: parameters)
-
+    param["oauth_token"] = oauthKeys["access_token"]!
+    
     // リクエストパラメータをアルファベット順に並べ替える
     var authorizationParameterComponents = urlEncodedQueryStringWithEncoding(param).componentsSeparatedByString("&") as [String]
     authorizationParameterComponents.sortInPlace { $0 < $1 }
@@ -82,7 +87,7 @@ class Zaim {
     
     // リクエストヘッダにリクエスト文字列を付与
     request.setValue("OAuth " + headerComponents.joinWithSeparator(", "), forHTTPHeaderField: "Authorization")
-    request.setValue(oauthKeys["access_token"], forHTTPHeaderField: "access_token")
+    //request.setValue(oauthKeys["access_token"]!, forHTTPHeaderField: "access_token")
     
     // リクエストを送信
     NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()){
@@ -95,6 +100,7 @@ class Zaim {
         print(error!.description)
       }
       // oauth_token表示
+      print("以下トークン")
       print(NSString(data: data!, encoding: self.dataEncoding)!)
     }
     
