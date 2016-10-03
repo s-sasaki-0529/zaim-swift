@@ -26,6 +26,7 @@ class InputCommentViewController: UIViewController , UITextFieldDelegate {
   /* 登録 */
   @IBAction func onTappedSubmitButton() {
     zaim.comment = commentTextView.text!
+    zaim.createPaymentData(zaim.genre, place: zaim.place, amount: zaim.amount, comment: zaim.comment)
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
     let delay = 1 * Double(NSEC_PER_SEC)
     let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
