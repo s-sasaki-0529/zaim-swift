@@ -53,6 +53,20 @@ class Zaim {
     return Dictionary<String,String>()
   }
   
+  /* Dictionary内のデータをエンコード */
+  func urlEncodedQueryStringWithEncoding(params:Dictionary<String, String>) -> String {
+    var parts = [String]()
+    
+    for (key, value) in params {
+      let keyString = urlEncode(key)
+      let valueString = urlEncode(value)
+      let query = "\(keyString)=\(valueString)" as String
+      parts.append(query)
+    }
+    
+    return parts.joinWithSeparator("&") as String
+  }
+  
   /* URLエンコードを行う */
   func urlEncode(str: String) -> String {
     let charactersToBeEscaped = ":/?&=;+!@#$()',*" as CFStringRef
