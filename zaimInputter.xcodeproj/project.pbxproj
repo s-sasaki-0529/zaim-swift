@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		280D33121DA0C6EA000B6AC2 /* OAuthSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D33111DA0C6EA000B6AC2 /* OAuthSwift.swift */; };
 		2835E8741DA02AB2007B742E /* keys.json in Resources */ = {isa = PBXBuildFile; fileRef = 2835E8721DA02906007B742E /* keys.json */; };
 		28C7B4731D9F3B31009C772A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C7B4721D9F3B31009C772A /* AppDelegate.swift */; };
 		28C7B4751D9F3B31009C772A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C7B4741D9F3B31009C772A /* ViewController.swift */; };
@@ -23,7 +22,6 @@
 
 /* Begin PBXFileReference section */
 		280D33101DA0C0D4000B6AC2 /* zaimInputter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "zaimInputter-Bridging-Header.h"; path = "zaimInputter/zaimInputter-Bridging-Header.h"; sourceTree = "<group>"; };
-		280D33111DA0C6EA000B6AC2 /* OAuthSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthSwift.swift; sourceTree = "<group>"; };
 		2835E8721DA02906007B742E /* keys.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = keys.json; sourceTree = "<group>"; };
 		28C7B46F1D9F3B31009C772A /* zaimInputter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zaimInputter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C7B4721D9F3B31009C772A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,7 +84,6 @@
 				28C7B4861D9F69F0009C772A /* GenreSelecterViewController.swift */,
 				28C7B4881D9F6C52009C772A /* AmountInputterViewController.swift */,
 				28C7B48A1D9F73D6009C772A /* InputCommentViewController.swift */,
-				280D33111DA0C6EA000B6AC2 /* OAuthSwift.swift */,
 			);
 			path = zaimInputter;
 			sourceTree = "<group>";
@@ -232,7 +229,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				280D33121DA0C6EA000B6AC2 /* OAuthSwift.swift in Sources */,
 				28C7B4891D9F6C52009C772A /* AmountInputterViewController.swift in Sources */,
 				28C7B4851D9F6420009C772A /* Zaim.swift in Sources */,
 				28C7B4871D9F69F0009C772A /* GenreSelecterViewController.swift in Sources */,
