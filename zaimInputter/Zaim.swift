@@ -53,6 +53,18 @@ class Zaim {
     return Dictionary<String,String>()
   }
   
+  /* URLエンコードを行う */
+  func urlEncode(str: String) -> String {
+    let charactersToBeEscaped = ":/?&=;+!@#$()',*" as CFStringRef
+    let charactersToLeaveUnescaped = "[]." as CFStringRef
+    
+    let raw: NSString = str
+    
+    let result = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, raw, charactersToLeaveUnescaped, charactersToBeEscaped, CFStringConvertNSStringEncodingToEncoding(dataEncoding)) as NSString
+    
+    return result as String
+  }
+  
   /* SHA1署名のハッシュ値を作成 */
   private func SHA1DigestWithKey(base: String, key: String) -> NSData {
     let str = base.cStringUsingEncoding(dataEncoding)
