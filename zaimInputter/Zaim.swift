@@ -11,12 +11,8 @@ import OAuthSwift
 
 
 class Zaim {
-  
-  let SITE_URL = "https://api.zaim.net";
+
   let API_URL = "https://api.zaim.net/v2/";
-  let REQUEST_TOKEN_PATH = "/v2/auth/request";
-  let AUTHORIZE_URL = "https://auth.zaim.net/users/auth";
-  let ACCESS_TOKEN_PATH = "https://api.zaim.net";
   let dataEncoding: NSStringEncoding = NSUTF8StringEncoding
   
   var place: String = "";
@@ -26,7 +22,7 @@ class Zaim {
   
   /* インスタンス生成時に、OAuth認証を行う */
   init () {
-    let url = "https://api.zaim.net/v2/home/money/income"
+    let url = API_URL + "home/money/income"
     let method = "POST"
     var params = Dictionary<String , String>()
     params["category_id"] = "12"
@@ -49,8 +45,7 @@ class Zaim {
   }
   
   /* OAuthパラメータを生成し、リクエストを送信する */
-  private
-  func sendOAuthRequest(method: String , url: String , postParameters: Dictionary<String , String>) {
+  private func sendOAuthRequest(method: String , url: String , postParameters: Dictionary<String , String>) {
     
     // リクエスト準備
     let requestURL = NSURL(string: url)!
