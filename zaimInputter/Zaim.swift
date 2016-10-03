@@ -1,5 +1,4 @@
 import Foundation
-import OAuthSwift
 
 
 class Zaim {
