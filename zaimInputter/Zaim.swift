@@ -49,6 +49,7 @@ class Zaim {
   }
   
   /* OAuthパラメータを生成し、リクエストを送信する */
+  private
   func sendOAuthRequest(method: String , url: String , postParameters: Dictionary<String , String>) {
     
     // リクエスト準備
@@ -110,7 +111,7 @@ class Zaim {
   }
   
   /* signature作成 */
-  func oauthSignatureForMethod(method: String, url: NSURL, parameters: Dictionary<String, String>) -> String {
+  private func oauthSignatureForMethod(method: String, url: NSURL, parameters: Dictionary<String, String>) -> String {
     let oauthKeys = loadOAuthKeys()
     let signingKey : String = "\(oauthKeys["secret"]!)&\(oauthKeys["access_token_secret"]!)"
     
@@ -128,7 +129,6 @@ class Zaim {
     
     // signature用ベース文字列作成
     let signatureBaseString = "\(method)&\(encodedURL)&\(encodedParameterString)"
-    
     
     // signature作成
     return SHA1DigestWithKey(signatureBaseString, key: signingKey).base64EncodedStringWithOptions(NSDataBase64EncodingOptions())
@@ -148,7 +148,7 @@ class Zaim {
   }
   
   /* Dictionary内のデータをエンコード */
-  func urlEncodedQueryStringWithEncoding(params:Dictionary<String, String>) -> String {
+  private func urlEncodedQueryStringWithEncoding(params:Dictionary<String, String>) -> String {
     var parts = [String]()
     
     for (key, value) in params {
@@ -162,7 +162,7 @@ class Zaim {
   }
   
   /* URLエンコードを行う */
-  func urlEncode(str: String) -> String {
+  private func urlEncode(str: String) -> String {
     let charactersToBeEscaped = ":/?&=;+!@#$()',*" as CFStringRef
     let charactersToLeaveUnescaped = "[]." as CFStringRef
     
