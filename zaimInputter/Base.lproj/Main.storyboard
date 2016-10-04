@@ -379,37 +379,92 @@
                     </view>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="inputplace" id="pNy-Fy-CnI"/>
-                        <segue destination="0aC-V8-XR8" kind="show" identifier="aggregatetop" id="4eM-fu-BGr"/>
+                        <segue destination="d5n-jf-0ww" kind="show" identifier="aggregatetop" id="AuS-QF-kbb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Sh-Ii-m41" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-609" y="266"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="Igs-UK-caD">
+        <!--Aggregate Top View Controller-->
+        <scene sceneID="ryu-73-AyG">
             <objects>
-                <tableViewController id="0aC-V8-XR8" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="I5l-qv-AfU">
+                <viewController id="d5n-jf-0ww" customClass="AggregateTopViewController" customModule="zaimInputter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pfz-jM-Yai"/>
+                        <viewControllerLayoutGuide type="bottom" id="8ew-IT-NIX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eWu-fF-zlF">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nZ6-hn-xa9">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="集計情報" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XD2-yr-Qgh">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vUa-bn-pbc">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="戻る"/>
+                                <connections>
+                                    <action selector="onTappedBackButton" destination="d5n-jf-0ww" eventType="touchUpInside" id="frb-F5-3Su"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KC2-OG-LJH">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KC2-OG-LJH" id="Nmx-z1-F2i">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="0aC-V8-XR8" id="VXp-hr-5To"/>
-                            <outlet property="delegate" destination="0aC-V8-XR8" id="d5k-27-FVO"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IT8-E0-dqM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="8ew-IT-NIX" firstAttribute="top" secondItem="nZ6-hn-xa9" secondAttribute="bottom" id="5UB-zg-wuz"/>
+                            <constraint firstItem="nZ6-hn-xa9" firstAttribute="leading" secondItem="eWu-fF-zlF" secondAttribute="leadingMargin" constant="-20" id="82m-yv-zIx"/>
+                            <constraint firstItem="nZ6-hn-xa9" firstAttribute="top" secondItem="vUa-bn-pbc" secondAttribute="bottom" constant="8" id="CVc-Bh-9bJ"/>
+                            <constraint firstItem="vUa-bn-pbc" firstAttribute="top" secondItem="pfz-jM-Yai" secondAttribute="bottom" constant="9" id="SNQ-9t-Uq0"/>
+                            <constraint firstItem="XD2-yr-Qgh" firstAttribute="leading" secondItem="eWu-fF-zlF" secondAttribute="leadingMargin" id="Ucp-yM-ga2"/>
+                            <constraint firstItem="vUa-bn-pbc" firstAttribute="trailing" secondItem="eWu-fF-zlF" secondAttribute="trailingMargin" id="fLG-yd-8Px"/>
+                            <constraint firstItem="XD2-yr-Qgh" firstAttribute="top" secondItem="pfz-jM-Yai" secondAttribute="bottom" id="xjc-87-qat"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nZ6-hn-xa9" secondAttribute="trailing" constant="-20" id="xxp-a2-cag"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="nZ6-hn-xa9"/>
+                                <exclude reference="XD2-yr-Qgh"/>
+                                <exclude reference="vUa-bn-pbc"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Ucp-yM-ga2"/>
+                                <exclude reference="xjc-87-qat"/>
+                                <exclude reference="82m-yv-zIx"/>
+                                <exclude reference="CVc-Bh-9bJ"/>
+                                <exclude reference="xxp-a2-cag"/>
+                                <exclude reference="SNQ-9t-Uq0"/>
+                                <exclude reference="fLG-yd-8Px"/>
+                                <exclude reference="5UB-zg-wuz"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="nZ6-hn-xa9"/>
+                                <include reference="XD2-yr-Qgh"/>
+                                <include reference="vUa-bn-pbc"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Ucp-yM-ga2"/>
+                                <include reference="xjc-87-qat"/>
+                                <include reference="82m-yv-zIx"/>
+                                <include reference="CVc-Bh-9bJ"/>
+                                <include reference="xxp-a2-cag"/>
+                                <include reference="SNQ-9t-Uq0"/>
+                                <include reference="fLG-yd-8Px"/>
+                                <include reference="5UB-zg-wuz"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tSm-ZD-SFa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="160.5" y="681"/>
+            <point key="canvasLocation" x="163.5" y="640"/>
         </scene>
         <!--Amount Inputter View Controller-->
         <scene sceneID="5tG-hJ-qPc">
