@@ -3,6 +3,8 @@ import Foundation
 
 class Zaim {
 
+  static var zaimObject: Zaim? = nil
+  
   let API_URL = "https://api.zaim.net/v2/";
   let oauth: OAuthSwift = OAuthSwift()
   var place: String = "";
@@ -10,8 +12,13 @@ class Zaim {
   var comment: String = "";
   var genre: String = "";
   
-  /* インスタンス生成時に、OAuth認証を行う */
-  init () {
+  /* 原則シングルトンとする */
+  private init () {}
+  static internal func getInstance () -> Zaim {
+    if Zaim.zaimObject == nil {
+      Zaim.zaimObject = Zaim()
+    }
+    return Zaim.zaimObject!
   }
   
   /* 支出データを登録 */
