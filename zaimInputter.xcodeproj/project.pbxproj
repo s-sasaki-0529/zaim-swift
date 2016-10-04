@@ -19,6 +19,7 @@
 		28C7B4891D9F6C52009C772A /* AmountInputterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C7B4881D9F6C52009C772A /* AmountInputterViewController.swift */; };
 		28C7B48B1D9F73D6009C772A /* InputCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C7B48A1D9F73D6009C772A /* InputCommentViewController.swift */; };
 		28E3A7DA1DA3BD7D009DE8FD /* TopMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E3A7D91DA3BD7D009DE8FD /* TopMenuViewController.swift */; };
+		28E3A7DC1DA3CD44009DE8FD /* AggregateTopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E3A7DB1DA3CD44009DE8FD /* AggregateTopViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		28C7B4881D9F6C52009C772A /* AmountInputterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountInputterViewController.swift; sourceTree = "<group>"; };
 		28C7B48A1D9F73D6009C772A /* InputCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputCommentViewController.swift; sourceTree = "<group>"; };
 		28E3A7D91DA3BD7D009DE8FD /* TopMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopMenuViewController.swift; sourceTree = "<group>"; };
+		28E3A7DB1DA3CD44009DE8FD /* AggregateTopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AggregateTopViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				28C7B4881D9F6C52009C772A /* AmountInputterViewController.swift */,
 				28C7B48A1D9F73D6009C772A /* InputCommentViewController.swift */,
 				28E3A7D91DA3BD7D009DE8FD /* TopMenuViewController.swift */,
+				28E3A7DB1DA3CD44009DE8FD /* AggregateTopViewController.swift */,
 			);
 			path = zaimInputter;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 				28C7B4891D9F6C52009C772A /* AmountInputterViewController.swift in Sources */,
 				28C7B4851D9F6420009C772A /* Zaim.swift in Sources */,
 				28C7B4871D9F69F0009C772A /* GenreSelecterViewController.swift in Sources */,
+				28E3A7DC1DA3CD44009DE8FD /* AggregateTopViewController.swift in Sources */,
 				28C7B4751D9F3B31009C772A /* PlaceSelecterViewController.swift in Sources */,
 				28E3A7DA1DA3BD7D009DE8FD /* TopMenuViewController.swift in Sources */,
 				28C7B48B1D9F73D6009C772A /* InputCommentViewController.swift in Sources */,
