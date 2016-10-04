@@ -19,6 +19,12 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
         "総収入" ,
         "総支出" ,
         "総利益"
+      ],
+      "subtitles" : [
+        "0回" ,
+        "0円" ,
+        "0円" ,
+        "0円"
       ]
     ] ,
     [
@@ -73,9 +79,16 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
   
   /* セルの内容 */
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let rows: [String] = contents[indexPath.section]["rows"] as! [String]
-    let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
-    cell.textLabel?.text = rows[indexPath.row]
+    let section = indexPath.section
+    let row = indexPath.row
+    let rows: [String] = contents[section]["rows"] as! [String]
+    //var cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+    let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
+    cell.textLabel?.text = rows[row]
+    if (contents[section]["subtitles"] != nil) {
+      let subtitles: [String] = contents[section]["subtitles"] as! [String]
+      cell.detailTextLabel?.text = subtitles[row]
+    }
     return cell
   }
   
