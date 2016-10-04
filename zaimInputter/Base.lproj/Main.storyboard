@@ -183,6 +183,22 @@
                                             <action selector="onTappedGenreButton:" destination="XIZ-5o-Yjv" eventType="touchUpInside" id="3gr-Tv-89o"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqb-QG-WgW">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="電車"/>
+                                        <connections>
+                                            <action selector="onTappedGenreButton:" destination="XIZ-5o-Yjv" eventType="touchUpInside" id="bYK-e6-c8N"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bhu-ru-eC5">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="バス"/>
+                                        <connections>
+                                            <action selector="onTappedGenreButton:" destination="XIZ-5o-Yjv" eventType="touchUpInside" id="20O-X2-niX"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="3ur-yQ-YWQ" firstAttribute="top" secondItem="9vd-c7-Lcv" secondAttribute="bottom" id="Cmo-gR-FoT"/>
