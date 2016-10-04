@@ -323,6 +323,9 @@
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <state key="normal" title="集計を見る"/>
+                                        <connections>
+                                            <action selector="onTappedAggregateButton" destination="1pY-eq-nMv" eventType="touchUpInside" id="Cc9-Ou-kOW"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -376,11 +379,37 @@
                     </view>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="inputplace" id="pNy-Fy-CnI"/>
+                        <segue destination="0aC-V8-XR8" kind="show" identifier="aggregatetop" id="4eM-fu-BGr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Sh-Ii-m41" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-609" y="266"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="Igs-UK-caD">
+            <objects>
+                <tableViewController id="0aC-V8-XR8" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="I5l-qv-AfU">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KC2-OG-LJH">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KC2-OG-LJH" id="Nmx-z1-F2i">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="0aC-V8-XR8" id="VXp-hr-5To"/>
+                            <outlet property="delegate" destination="0aC-V8-XR8" id="d5k-27-FVO"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IT8-E0-dqM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="160.5" y="681"/>
         </scene>
         <!--Amount Inputter View Controller-->
         <scene sceneID="5tG-hJ-qPc">

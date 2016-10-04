@@ -14,4 +14,11 @@ class TopMenuViewController: UIViewController {
     self.performSegueWithIdentifier("inputplace", sender: self)
   }
   
+  /* 集計を見る */
+  @IBAction func onTappedAggregateButton() {
+    self.performSegueWithIdentifier("aggregatetop", sender: self)
+    
+  }
+  
+  
 }
