@@ -41,7 +41,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdP-ZU-Hvs">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="ベルクス"/>
+                                        <state key="normal" title="自動販売機"/>
                                         <connections>
                                             <action selector="onTappedPlaceButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gcf-W7-TT3"/>
                                         </connections>
@@ -49,7 +49,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPs-Ew-JeY">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="自動販売機"/>
+                                        <state key="normal" title="指定なし"/>
                                         <connections>
                                             <action selector="onTappedPlaceButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wtt-Tu-3IY"/>
                                         </connections>

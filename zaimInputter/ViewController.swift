@@ -9,7 +9,11 @@ class ViewController: UIViewController {
   }
 
   @IBAction func onTappedPlaceButton(sender: UIButton) {
-    zaim.place = sender.currentTitle!
+    var place = sender.currentTitle!
+    if place == "指定なし" {
+      place = ""
+    }
+    zaim.place = place
     self.performSegueWithIdentifier("genreselecter", sender: self)
   }
 
