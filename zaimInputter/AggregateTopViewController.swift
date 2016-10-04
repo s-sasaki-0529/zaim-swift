@@ -7,7 +7,9 @@
 //
 
 import UIKit
-class AggregateTopViewController: UIViewController , UITableViewDelegate {
+class AggregateTopViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
+  
+  @IBOutlet weak var tableview: UITableView!
   
   let contents = [
     [
@@ -46,6 +48,36 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate {
       ]
     ]
   ]
+  
+  /* view did load */
+  override func viewDidLoad() {
+    tableview.delegate = self
+    tableview.dataSource = self
+    tableview.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+  }
+  
+  /* セクション数 */
+  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    return contents.count
+  }
+  
+  /* セクションのタイトル */
+  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    return contents[section]["title"]! as? String
+  }
+  
+  /* セル数 */
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return contents[section]["rows"]!.count
+  }
+  
+  /* セルの内容 */
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let rows: [String] = contents[indexPath.section]["rows"] as! [String]
+    let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
+    cell.textLabel?.text = rows[indexPath.row]
+    return cell
+  }
   
   /* 戻る */
   @IBAction func onTappedBackButton() {

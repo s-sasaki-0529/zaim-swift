@@ -463,6 +463,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="tableview" destination="nZ6-hn-xa9" id="OEU-i3-DWV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tSm-ZD-SFa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
