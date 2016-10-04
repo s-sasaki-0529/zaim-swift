@@ -8,6 +8,7 @@ class ViewController: UIViewController {
     super.viewDidLoad()
   }
 
+  /* placeボタン */
   @IBAction func onTappedPlaceButton(sender: UIButton) {
     var place = sender.currentTitle!
     if place == "指定なし" {
@@ -16,6 +17,12 @@ class ViewController: UIViewController {
     zaim.place = place
     self.performSegueWithIdentifier("genreselecter", sender: self)
   }
+  
+  /* 戻る */
+  @IBAction func onTappedBackButton() {
+    self.dismissViewControllerAnimated(true, completion: nil)
+  }
+  
 
 
 }
