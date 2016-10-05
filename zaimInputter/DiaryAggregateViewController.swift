@@ -38,6 +38,14 @@ class DiaryAggregateViewController: UIViewController , UITableViewDelegate , UIT
     return cell
   }
   
+  /* セルをタップ */
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    let row = indexPath.row
+    let date = diary[row].first!.0
+    let url = NSURL(string: "https://zaim.net/money?start_date=" + date + "&end_date=" + date)
+    UIApplication.sharedApplication().openURL(url!)
+  }
+  
   /* 戻る */
   @IBAction func onTappedBackButton() {
     self.dismissViewControllerAnimated(true, completion: nil)
