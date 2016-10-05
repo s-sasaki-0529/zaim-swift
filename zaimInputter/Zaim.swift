@@ -63,6 +63,30 @@ class Zaim {
     return totalIncome() - totalPayment()
   }
   
+  /* 日別集計を取得 */
+  internal func diaryAggregate () -> [Dictionary<String , Int>] {
+    var da = Dictionary<String , Int>()
+    var days: [String] = []
+    var result: [Dictionary<String ,Int>] = []
+    
+    // Todo 順番を維持するアルゴリズムを見直す必要あり
+    for pay in getAllPayment() {
+      let date = pay["date"]!
+      let amount = Int(pay["amount"]!)!
+      if da[date] == nil {
+        days.append(date)
+        da[date] = amount
+      } else {
+        da[date] = da[date]! + amount
+      }
+    }
+    
+    for day in days {
+      result.append([day:da[day]!])
+    }
+    return result
+  }
+  
   /* 全支出情報を取得 */
   private func getAllPayment () -> [Dictionary<String , String>] {
     return grepMoneyInfo(["mode": "payment"])
