@@ -2,7 +2,7 @@ import Foundation
 
 
 class Zaim {
-
+  
   static var zaimObject: Zaim? = nil
   
   let API_URL = "https://api.zaim.net/v2/";
