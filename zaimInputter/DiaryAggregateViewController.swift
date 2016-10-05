@@ -9,11 +9,14 @@
 import UIKit
 class DiaryAggregateViewController: UIViewController , UITableViewDelegate , UITableViewDataSource {
   
+  private let zaim: Zaim = (UIApplication.sharedApplication().delegate as! AppDelegate).zaim
   @IBOutlet weak var tableview: UITableView!
+  var diary: [Dictionary<String , Int>] = []
   
   /* view did load */
   override func viewDidLoad() {
     super.viewDidLoad()
+    diary = zaim.diaryAggregate()
     tableview.delegate = self
     tableview.dataSource = self
     tableview.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -21,15 +24,17 @@ class DiaryAggregateViewController: UIViewController , UITableViewDelegate , UIT
   
   /* セル数 */
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 10
+    return self.diary.count
   }
   
   /* セルの内容 */
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let section = indexPath.section
     let row = indexPath.row
-    let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-    cell.textLabel?.text = "hogehoge"
+    let date = self.diary[row].first!.0
+    let amount = self.diary[row].first!.1
+    let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
+    cell.textLabel?.text = date
+    cell.detailTextLabel!.text = zaim.IntegerToKanji(amount) + " 円"
     return cell
   }
   
