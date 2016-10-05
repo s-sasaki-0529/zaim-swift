@@ -8,11 +8,7 @@ class Zaim {
   let API_URL = "https://api.zaim.net/v2/";
   let oauth: OAuthSwift = OAuthSwift()
   var allMoney: [Dictionary<String , String>]? = nil
-  
-  var place: String = "";
-  var amount: Int = 0;
-  var comment: String = "";
-  var genre: String = "";
+  var globalParams: Dictionary<String , String> = Dictionary()
   
   /* 原則シングルトンとする */
   private init () {}

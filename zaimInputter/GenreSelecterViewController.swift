@@ -8,7 +8,7 @@ class GenreSelecterViewController: UIViewController {
   }
   
   @IBAction func onTappedGenreButton(sender: UIButton) {
-    zaim.genre = sender.currentTitle!
+    zaim.globalParams["inputGenre"] = sender.currentTitle!
     self.performSegueWithIdentifier("amountinputter", sender: self)
   }
   

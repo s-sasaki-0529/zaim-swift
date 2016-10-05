@@ -9,9 +9,9 @@ class InputCommentViewController: UIViewController , UITextFieldDelegate {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    placeLabel.text = zaim.place
-    genreLabel.text = zaim.genre
-    amountLabel.text = "¥" + String(zaim.amount)
+    placeLabel.text = zaim.globalParams["inputPlace"]
+    genreLabel.text = zaim.globalParams["inputGenre"]
+    amountLabel.text = "¥" + zaim.globalParams["inputAmount"]!
     commentTextView.delegate = self
     commentTextView.becomeFirstResponder()
   }
@@ -25,8 +25,11 @@ class InputCommentViewController: UIViewController , UITextFieldDelegate {
   
   /* 登録 */
   @IBAction func onTappedSubmitButton() {
-    zaim.comment = commentTextView.text!
-    zaim.createPaymentData(zaim.genre, place: zaim.place, amount: zaim.amount, comment: zaim.comment)
+    let place = zaim.globalParams["inputPlace"]!
+    let genre = zaim.globalParams["inputGenre"]!
+    let amount = Int(zaim.globalParams["inputAmount"]!)!
+    let comment = commentTextView.text!
+    zaim.createPaymentData(genre, place: place, amount: amount, comment: comment)
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
     let delay = 1 * Double(NSEC_PER_SEC)
     let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))

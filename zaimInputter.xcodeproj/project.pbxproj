@@ -87,11 +87,11 @@
 			children = (
 				285A31331DA4F6CE007DCE59 /* ViewController */,
 				2835E8721DA02906007B742E /* keys.json */,
-				28C7B4721D9F3B31009C772A /* AppDelegate.swift */,
 				28C7B4761D9F3B31009C772A /* Main.storyboard */,
 				28C7B4791D9F3B31009C772A /* Assets.xcassets */,
 				28C7B47B1D9F3B31009C772A /* LaunchScreen.storyboard */,
 				28C7B47E1D9F3B31009C772A /* Info.plist */,
+				28C7B4721D9F3B31009C772A /* AppDelegate.swift */,
 				28C7B4841D9F6420009C772A /* Zaim.swift */,
 				289664181DA25012002BB070 /* OAuthSwift.swift */,
 			);

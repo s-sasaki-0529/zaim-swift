@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     if place == "指定なし" {
       place = ""
     }
-    zaim.place = place
+    zaim.globalParams["inputPlace"] = place
     self.performSegueWithIdentifier("genreselecter", sender: self)
   }
   
