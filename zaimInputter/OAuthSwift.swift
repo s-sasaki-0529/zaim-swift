@@ -15,7 +15,7 @@ class OAuthSwift {
     if queryStrings.count > 0 {
       urlWithParams += "?" + queryStrings.joinWithSeparator("&")
     }
-    return sendOAuthRequest("GET", url: urlWithParams, sendParams: [:])
+    return sendOAuthRequest("GET", url: urlWithParams, sendParams: params)
   }
   
   /* POST */
@@ -28,6 +28,7 @@ class OAuthSwift {
     
     // リクエスト準備
     let requestURL = NSURL(string: url)!
+    let originURL = NSURL(string: url.componentsSeparatedByString("?")[0])!
     let request : NSMutableURLRequest = NSMutableURLRequest(URL: requestURL);
     request.HTTPMethod = method
     request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData
@@ -46,7 +47,7 @@ class OAuthSwift {
     oauthParams["oauth_timestamp"] = String(Int64(NSDate().timeIntervalSince1970))
     oauthParams["oauth_nonce"] = (NSUUID().UUIDString as NSString).substringToIndex(8)
     oauthParams["oauth_token"] = oauthKeys["access_token"]!
-    oauthParams["oauth_signature"] = oauthSignatureForMethod(method , url: requestURL, oauthParams: oauthParams, sendParams: sendParams)
+    oauthParams["oauth_signature"] = oauthSignatureForMethod(method , url: originURL, oauthParams: oauthParams, sendParams: sendParams)
     
     // リクエストパラメータをアルファベット順に並べ替える
     var authorizationParameterComponents = urlEncodedQueryStringWithEncoding(oauthParams).componentsSeparatedByString("&") as [String]
@@ -104,7 +105,6 @@ class OAuthSwift {
     
     // urlエンコード
     let encodedParameterString = urlEncode(parameterString)
-    
     let encodedURL = urlEncode(url.absoluteString)
     
     // signature用ベース文字列作成
