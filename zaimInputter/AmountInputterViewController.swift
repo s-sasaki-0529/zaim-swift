@@ -57,7 +57,7 @@ class AmountInputterViewController: UIViewController {
   
   /* GO */
   @IBAction func onTappedGoButton() {
-    zaim.amount = toInt()
+    zaim.globalParams["inputAmount"] = String(toInt())
     self.performSegueWithIdentifier("inputcomment", sender: self);
   }
   
