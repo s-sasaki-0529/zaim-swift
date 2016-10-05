@@ -55,6 +55,16 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
     return cell
   }
   
+  /* セルをタップ */
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    let section = indexPath.section
+    let row = indexPath.row
+    // 日別集計
+    if section == 1 && row == 0 {
+      self.performSegueWithIdentifier("diaryaggregate", sender: self)
+    }
+  }
+  
   /* 戻る */
   @IBAction func onTappedBackButton() {
     self.dismissViewControllerAnimated(true, completion: nil)

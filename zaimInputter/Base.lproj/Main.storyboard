@@ -465,11 +465,95 @@
                     </view>
                     <connections>
                         <outlet property="tableview" destination="nZ6-hn-xa9" id="OEU-i3-DWV"/>
+                        <segue destination="FVS-Lx-xo5" kind="show" identifier="diaryaggregate" id="791-r0-5OH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tSm-ZD-SFa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="163.5" y="640"/>
+        </scene>
+        <!--Diary Aggregate View Controller-->
+        <scene sceneID="KZf-I1-AFs">
+            <objects>
+                <viewController id="FVS-Lx-xo5" customClass="DiaryAggregateViewController" customModule="zaimInputter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JrG-ln-lw6"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zke-w9-1Ns"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YPp-aY-L40">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日別集計" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqo-zG-fCn">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gFc-5U-ndE">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iI-Mb-Jfa">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="戻る"/>
+                                <connections>
+                                    <action selector="onTappedBackButton" destination="FVS-Lx-xo5" eventType="touchUpInside" id="xz1-Ue-53F"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="gFc-5U-ndE" secondAttribute="trailing" constant="-20" id="LqB-jj-5tQ"/>
+                            <constraint firstItem="mqo-zG-fCn" firstAttribute="leading" secondItem="YPp-aY-L40" secondAttribute="leadingMargin" id="R4B-Hi-yfx"/>
+                            <constraint firstItem="gFc-5U-ndE" firstAttribute="leading" secondItem="YPp-aY-L40" secondAttribute="leadingMargin" constant="-20" id="RJv-ut-s2O"/>
+                            <constraint firstItem="6iI-Mb-Jfa" firstAttribute="trailing" secondItem="YPp-aY-L40" secondAttribute="trailingMargin" id="Ygx-Xj-S7p"/>
+                            <constraint firstItem="mqo-zG-fCn" firstAttribute="top" secondItem="JrG-ln-lw6" secondAttribute="bottom" id="hLL-9I-wGL"/>
+                            <constraint firstItem="6iI-Mb-Jfa" firstAttribute="top" secondItem="JrG-ln-lw6" secondAttribute="bottom" constant="6" id="ke6-nW-Jph"/>
+                            <constraint firstItem="Zke-w9-1Ns" firstAttribute="top" secondItem="gFc-5U-ndE" secondAttribute="bottom" id="rmw-PM-ltX"/>
+                            <constraint firstItem="gFc-5U-ndE" firstAttribute="top" secondItem="mqo-zG-fCn" secondAttribute="bottom" constant="8" id="xp2-Oy-ndU"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="mqo-zG-fCn"/>
+                                <exclude reference="gFc-5U-ndE"/>
+                                <exclude reference="6iI-Mb-Jfa"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="R4B-Hi-yfx"/>
+                                <exclude reference="hLL-9I-wGL"/>
+                                <exclude reference="LqB-jj-5tQ"/>
+                                <exclude reference="RJv-ut-s2O"/>
+                                <exclude reference="xp2-Oy-ndU"/>
+                                <exclude reference="Ygx-Xj-S7p"/>
+                                <exclude reference="ke6-nW-Jph"/>
+                                <exclude reference="rmw-PM-ltX"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="mqo-zG-fCn"/>
+                                <include reference="gFc-5U-ndE"/>
+                                <include reference="6iI-Mb-Jfa"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="R4B-Hi-yfx"/>
+                                <include reference="hLL-9I-wGL"/>
+                                <include reference="LqB-jj-5tQ"/>
+                                <include reference="RJv-ut-s2O"/>
+                                <include reference="xp2-Oy-ndU"/>
+                                <include reference="Ygx-Xj-S7p"/>
+                                <include reference="ke6-nW-Jph"/>
+                                <include reference="rmw-PM-ltX"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="tableview" destination="gFc-5U-ndE" id="VNu-iN-9zn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="emJ-tb-dO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="907.5" y="640"/>
         </scene>
         <!--Amount Inputter View Controller-->
         <scene sceneID="5tG-hJ-qPc">
