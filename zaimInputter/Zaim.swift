@@ -7,6 +7,8 @@ class Zaim {
   
   let API_URL = "https://api.zaim.net/v2/";
   let oauth: OAuthSwift = OAuthSwift()
+  var allMoney: [Dictionary<String , String>]? = nil
+  
   var place: String = "";
   var amount: Int = 0;
   var comment: String = "";
@@ -22,7 +24,7 @@ class Zaim {
   }
   
   /* 支出データを登録 */
-  internal func createPaymentData(genreName: String , place: String , amount: Int , comment: String) -> NSDictionary {
+  internal func createPaymentData(genreName: String , place: String , amount: Int , comment: String) {
     let url = API_URL + "home/money/payment"
     var params = Dictionary<String , String>()
     params["category_id"] = genreToCategoryID(genreName)
@@ -30,18 +32,62 @@ class Zaim {
     params["place"] = place
     params["amount"] = String(amount)
     params["comment"] = comment
-    return oauth.post(url , params:params)
+    oauth.post(url , params:params)
   }
   
   /* 収入データを登録 */
-  internal func createIncomeData(category_id: String , date: String , amount: Int , comment: String) -> NSDictionary{
+  internal func createIncomeData(category_id: String , date: String , amount: Int , comment: String) {
     let url = API_URL + "home/money/income"
     var params = Dictionary<String , String>()
     params["category_id"] = category_id
     params["date"] = date
     params["amount"] = String(amount)
     params["comment"] = comment
-    return oauth.post(url , params: params)
+    oauth.post(url , params: params)
+  }
+  
+  /* 全支出情報を取得 */
+  private func getAllPayment () -> [Dictionary<String , String>] {
+    return grepMoneyInfo(["mode": "payment"])
+  }
+  
+  /* 全収入情報を取得 */
+  private func getAllIncome () -> [Dictionary<String , String>] {
+    return grepMoneyInfo(["mode": "income"])
+  }
+  
+  /* 全支出情報から特定の支出を抜き出す */
+  private func grepMoneyInfo (params: Dictionary<String , String>) -> [Dictionary<String ,String>] {
+    let allMoney = getAllMoney()
+    let grepedMoney = allMoney.filter { (m) -> Bool in
+      var result = true
+      for (k , v) in params {
+        if m[k] != v {
+          result = false
+          break
+        }
+      }
+      return result
+    }
+    return grepedMoney
+  }
+  
+  /* 全入力情報取得し、キャッシュする */
+  private func getAllMoney () -> [Dictionary<String , String>] {
+    //なんかもうメチャクチャなので、JSONの変換から見直したい
+    if self.allMoney == nil {
+      let nsdicMoneys = oauth.get(API_URL + "home/money" , params: [:])["money"]! as! [NSDictionary]
+      var dicMoneys = [Dictionary<String , String>]()
+      for m in nsdicMoneys {
+        var param = Dictionary<String , String>()
+        for (k , v) in m {
+          param[k as! String] = String(v)
+        }
+        dicMoneys.append(param)
+      }
+      self.allMoney = dicMoneys
+    }
+    return self.allMoney!
   }
   
   /* ジャンル名をgenreIDに変換する */
