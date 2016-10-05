@@ -14,7 +14,7 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
   
   let headers = ["基本情報" , "日別集計" , "月別集計" , "ランキング"]
   var contents: Array<Array<String>> = [
-    ["入力回数" , "総収入" , "総支出" , "総利益"],
+    ["入力数" , "総収入" , "総支出" , "総利益"],
     ["累計"],
     ["累計" , "食費" , "ガス代" , "電気代" , "水道代" , "ポケモンGO" , "デグー関連"],
     ["カテゴリ" , "ジャンル" , "支払先"]
@@ -25,6 +25,10 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
     tableview.delegate = self
     tableview.dataSource = self
     tableview.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+    contents[0][0] = "入力数 \(zaim.totalInputCount())円"
+    contents[0][1] = "総収入 \(zaim.totalIncome())円"
+    contents[0][2] = "総支出 \(zaim.totalPayment())円"
+    contents[0][3] = "総利益 \(zaim.totalProfit())円"
   }
   
   /* セクション数 */

@@ -47,22 +47,22 @@ class Zaim {
   }
   
   /* 総入力回数を取得 */
-  private func totalInputCount () -> Int {
+  internal func totalInputCount () -> Int {
     return getAllMoney().count
   }
   
   /* 総支出額を取得 */
-  private func totalPayment () -> Int {
+  internal func totalPayment () -> Int {
     return getAllPayment().reduce(0) { (sum , p) -> Int in sum + Int(p["amount"]!)! }
   }
   
   /* 総収入額を取得 */
-  private func totalIncome () -> Int {
+  internal func totalIncome () -> Int {
     return getAllIncome().reduce(0) { (sum , p) -> Int in sum + Int(p["amount"]!)! }
   }
   
   /* 総利益を取得 */
-  private func totalProfit () -> Int {
+  internal func totalProfit () -> Int {
     // 収入が支出を上回っている前提
     return totalIncome() - totalPayment()
   }
