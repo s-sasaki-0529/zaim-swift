@@ -25,10 +25,10 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
     tableview.delegate = self
     tableview.dataSource = self
     tableview.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-    contents[0][0] = "入力数 \(zaim.totalInputCount())円"
-    contents[0][1] = "総収入 \(zaim.totalIncome())円"
-    contents[0][2] = "総支出 \(zaim.totalPayment())円"
-    contents[0][3] = "総利益 \(zaim.totalProfit())円"
+    contents[0][0] = "入力数 \(zaim.IntegerToKanji(zaim.totalInputCount()))円"
+    contents[0][1] = "総収入 \(zaim.IntegerToKanji(zaim.totalIncome()))円"
+    contents[0][2] = "総支出 \(zaim.IntegerToKanji(zaim.totalPayment()))円"
+    contents[0][3] = "総利益 \(zaim.IntegerToKanji(zaim.totalProfit()))円"
   }
   
   /* セクション数 */
