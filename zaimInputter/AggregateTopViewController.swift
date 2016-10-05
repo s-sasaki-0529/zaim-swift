@@ -9,9 +9,9 @@
 import UIKit
 class AggregateTopViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
   
+  private let zaim: Zaim = (UIApplication.sharedApplication().delegate as! AppDelegate).zaim
   @IBOutlet weak var tableview: UITableView!
-  
-  let contents = [
+  var contents: [Dictionary<String , AnyObject>] = [
     [
       "title": "基本情報" ,
       "rows" : [
@@ -19,12 +19,6 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
         "総収入" ,
         "総支出" ,
         "総利益"
-      ],
-      "subtitles" : [
-        "0回" ,
-        "0円" ,
-        "0円" ,
-        "0円"
       ]
     ] ,
     [
@@ -82,13 +76,9 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
     let section = indexPath.section
     let row = indexPath.row
     let rows: [String] = contents[section]["rows"] as! [String]
-    //var cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-    let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
-    cell.textLabel?.text = rows[row]
-    if (contents[section]["subtitles"] != nil) {
-      let subtitles: [String] = contents[section]["subtitles"] as! [String]
-      cell.detailTextLabel?.text = subtitles[row]
-    }
+    let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+    cell.textLabel?.tex
+    t = rows[row]
     return cell
   }
   
