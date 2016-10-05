@@ -5,7 +5,7 @@ class OAuthSwift {
   let dataEncoding: NSStringEncoding = NSUTF8StringEncoding
   
   /* GET */
-  internal func get (url: String , params: Dictionary<String, String>) -> Bool {
+  internal func get (url: String , params: Dictionary<String, String>) -> NSDictionary {
     var urlWithParams = url
     var queryStrings = [String]()
     for (k , v) in params {
@@ -19,12 +19,12 @@ class OAuthSwift {
   }
   
   /* POST */
-  internal func post (url: String , params: Dictionary<String, String>) -> Bool {
+  internal func post (url: String , params: Dictionary<String, String>) -> NSDictionary {
     return sendOAuthRequest("POST", url: url, sendParams: params)
   }
   
   /* OAuthパラメータを生成し、リクエストを送信する */
-  private func sendOAuthRequest(method: String , url: String , sendParams: Dictionary<String , String>) -> Bool {
+  private func sendOAuthRequest(method: String , url: String , sendParams: Dictionary<String , String>) -> NSDictionary {
     
     // リクエスト準備
     let requestURL = NSURL(string: url)!
@@ -67,22 +67,26 @@ class OAuthSwift {
     
     // リクエストを送信(強制的に同期処理にする)
     let session = NSURLSession.sharedSession()
-    var result: Bool = false
+    var result: NSDictionary = NSDictionary()
     let semaphore = dispatch_semaphore_create(0)
     let task = session.dataTaskWithRequest(request) { data , response , error in
       if data != nil && response != nil {
-        let body = NSString(data: data!, encoding: NSUTF8StringEncoding)!
-        print(body)
-        result = true
+        do {
+          result = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as! NSDictionary
+        } catch  {
+          print("JSON ERROR")
+          exit(1)
+        }
       } else {
         print(error)
+        exit(1)
       }
       dispatch_semaphore_signal(semaphore)
     }
     task.resume()
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-    print(result)
     return result
+    
   }
   
   /* signature作成 */

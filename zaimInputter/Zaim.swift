@@ -22,7 +22,7 @@ class Zaim {
   }
   
   /* 支出データを登録 */
-  internal func createPaymentData(genreName: String , place: String , amount: Int , comment: String) -> Bool {
+  internal func createPaymentData(genreName: String , place: String , amount: Int , comment: String) -> NSDictionary {
     let url = API_URL + "home/money/payment"
     var params = Dictionary<String , String>()
     params["category_id"] = genreToCategoryID(genreName)
@@ -34,7 +34,7 @@ class Zaim {
   }
   
   /* 収入データを登録 */
-  internal func createIncomeData(category_id: String , date: String , amount: Int , comment: String) -> Bool{
+  internal func createIncomeData(category_id: String , date: String , amount: Int , comment: String) -> NSDictionary{
     let url = API_URL + "home/money/income"
     var params = Dictionary<String , String>()
     params["category_id"] = category_id
