@@ -4,13 +4,27 @@ class OAuthSwift {
   
   let dataEncoding: NSStringEncoding = NSUTF8StringEncoding
   
+  /* GET */
+  internal func get (url: String , params: Dictionary<String, String>) -> Bool {
+    var urlWithParams = url
+    var queryStrings = [String]()
+    for (k , v) in params {
+      let encodedValue = urlEncode(v)
+      queryStrings.append("\(k)=\(encodedValue)")
+    }
+    if queryStrings.count > 0 {
+      urlWithParams += "?" + queryStrings.joinWithSeparator("&")
+    }
+    return sendOAuthRequest("GET", url: urlWithParams, sendParams: [:])
+  }
+  
   /* POST */
   internal func post (url: String , params: Dictionary<String, String>) -> Bool {
-    return sendOAuthRequest("POST", url: url, postParameters: params)
+    return sendOAuthRequest("POST", url: url, sendParams: params)
   }
   
   /* OAuthパラメータを生成し、リクエストを送信する */
-  private func sendOAuthRequest(method: String , url: String , postParameters: Dictionary<String , String>) -> Bool {
+  private func sendOAuthRequest(method: String , url: String , sendParams: Dictionary<String , String>) -> Bool {
     
     // リクエスト準備
     let requestURL = NSURL(string: url)!
@@ -18,8 +32,10 @@ class OAuthSwift {
     request.HTTPMethod = method
     request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData
     
-    let p = urlEncodedQueryStringWithEncoding(postParameters)
-    request.HTTPBody = p.dataUsingEncoding(dataEncoding)
+    if (method == "POST") {
+      let p = urlEncodedQueryStringWithEncoding(sendParams)
+      request.HTTPBody = p.dataUsingEncoding(dataEncoding)
+    }
     
     // リクエストパラメータ準備
     var oauthParams = Dictionary<String, String>()
@@ -30,7 +46,7 @@ class OAuthSwift {
     oauthParams["oauth_timestamp"] = String(Int64(NSDate().timeIntervalSince1970))
     oauthParams["oauth_nonce"] = (NSUUID().UUIDString as NSString).substringToIndex(8)
     oauthParams["oauth_token"] = oauthKeys["access_token"]!
-    oauthParams["oauth_signature"] = oauthSignatureForMethod(method , url: requestURL, oauthParams: oauthParams, postParams: postParameters)
+    oauthParams["oauth_signature"] = oauthSignatureForMethod(method , url: requestURL, oauthParams: oauthParams, sendParams: sendParams)
     
     // リクエストパラメータをアルファベット順に並べ替える
     var authorizationParameterComponents = urlEncodedQueryStringWithEncoding(oauthParams).componentsSeparatedByString("&") as [String]
@@ -54,7 +70,8 @@ class OAuthSwift {
     let semaphore = dispatch_semaphore_create(0)
     let task = session.dataTaskWithRequest(request) { data , response , error in
       if data != nil && response != nil {
-        print(response)
+        let body = NSString(data: data!, encoding: NSUTF8StringEncoding)!
+        print(body)
         result = true
       } else {
         print(error)
@@ -68,18 +85,18 @@ class OAuthSwift {
   }
   
   /* signature作成 */
-  private func oauthSignatureForMethod(method: String, url: NSURL, oauthParams: Dictionary<String, String> , postParams: Dictionary<String, String>) -> String {
+  private func oauthSignatureForMethod(method: String, url: NSURL, oauthParams: Dictionary<String, String> , sendParams: Dictionary<String, String>) -> String {
     
     let oauthKeys = loadOAuthKeys()
     let signingKey : String = "\(oauthKeys["secret"]!)&\(oauthKeys["access_token_secret"]!)"
     
-    var meargeParams = oauthParams
-    for (key , value) in postParams {
-      meargeParams[key] = value
+    var params = oauthParams
+    for (key , value) in sendParams {
+      params[key] = value
     }
     
     // パラメータ取得してソート
-    var parameterComponents = urlEncodedQueryStringWithEncoding(meargeParams).componentsSeparatedByString("&") as [String]
+    var parameterComponents = urlEncodedQueryStringWithEncoding(params).componentsSeparatedByString("&") as [String]
     parameterComponents.sortInPlace { $0 < $1 }
     
     // query string作成
