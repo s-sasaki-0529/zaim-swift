@@ -23,30 +23,25 @@ class Zaim {
   
   /* 支出データを登録 */
   internal func createPaymentData(genreName: String , place: String , amount: Int , comment: String) -> Bool {
-    let url = "home/money/payment"
+    let url = API_URL + "home/money/payment"
     var params = Dictionary<String , String>()
     params["category_id"] = genreToCategoryID(genreName)
     params["genre_id"] = genreToID(genreName)
     params["place"] = place
     params["amount"] = String(amount)
     params["comment"] = comment
-    return post(url , params:params)
+    return oauth.post(url , params:params)
   }
   
   /* 収入データを登録 */
   internal func createIncomeData(category_id: String , date: String , amount: Int , comment: String) -> Bool{
-    let url = "home/money/income"
+    let url = API_URL + "home/money/income"
     var params = Dictionary<String , String>()
     params["category_id"] = category_id
     params["date"] = date
     params["amount"] = String(amount)
     params["comment"] = comment
-    return post(url , params: params)
-  }
-  
-  /* POST */
-  private func post (url: String , params: Dictionary<String, String>) -> Bool {
-    return oauth.sendOAuthRequest("POST", url: API_URL + url, postParameters: params)
+    return oauth.post(url , params: params)
   }
   
   /* ジャンル名をgenreIDに変換する */

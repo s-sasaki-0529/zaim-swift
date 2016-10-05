@@ -4,8 +4,13 @@ class OAuthSwift {
   
   let dataEncoding: NSStringEncoding = NSUTF8StringEncoding
   
+  /* POST */
+  internal func post (url: String , params: Dictionary<String, String>) -> Bool {
+    return sendOAuthRequest("POST", url: url, postParameters: params)
+  }
+  
   /* OAuthパラメータを生成し、リクエストを送信する */
-  internal func sendOAuthRequest(method: String , url: String , postParameters: Dictionary<String , String>) -> Bool {
+  private func sendOAuthRequest(method: String , url: String , postParameters: Dictionary<String , String>) -> Bool {
     
     // リクエスト準備
     let requestURL = NSURL(string: url)!
