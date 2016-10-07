@@ -64,6 +64,11 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
       zaim.globalParams["titlelabel"] = "累計 日別"
       self.performSegueWithIdentifier("aggregate", sender: self)
     }
+    // 月別集計 累計
+    else if section == 2 && row == 0 {
+      zaim.globalParams["titlelabel"] = "累計 月別"
+      self.performSegueWithIdentifier("aggregate", sender: self)
+    }
   }
   
   /* 戻る */
@@ -76,6 +81,9 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
     if zaim.globalParams["titlelabel"] == "累計 日別" {
       let vc = segue.destinationViewController as! DiaryAggregateViewController
       vc.data = zaim.diaryAggregate()
+    } else if zaim.globalParams["titlelabel"] == "累計 月別" {
+      let vc = segue.destinationViewController as! DiaryAggregateViewController
+      vc.data = zaim.monthryAggregate([:])
     }
   }
 

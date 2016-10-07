@@ -65,23 +65,48 @@ class Zaim {
   
   /* 日別集計を取得 */
   internal func diaryAggregate () -> [Dictionary<String , Int>] {
+    return aggregate([:])
+  }
+  
+  /* 月別集計を取得 */
+  internal func monthryAggregate (params: Dictionary<String , String>) -> [Dictionary<String , Int>] {
+    // Todo 25日補正が無い
+    var newParams = params
+    newParams["term"] = "monthly"
+    return aggregate(newParams)
+  }
+  
+  /* 支出を特定の条件で集計する */
+  private func aggregate(params: Dictionary<String , String>) -> [Dictionary<String , Int>] {
     var da = Dictionary<String , Int>()
-    var days: [String] = []
+    var paymentsArray: [String] = []
     var result: [Dictionary<String ,Int>] = []
+    var payments: [Dictionary<String,String>] = []
+    let paymentsOrigin = getAllPayment()
     
-    // Todo 順番を維持するアルゴリズムを見直す必要あり
-    for pay in getAllPayment() {
+    // 集計対象の期間
+    if params["term"] == "monthly" {
+      for var pay in paymentsOrigin {
+        pay["date"] = (pay["date"]! as NSString).substringWithRange(NSRange(location: 0,length: 7))
+        payments.append(pay)
+      }
+    } else {
+      payments = paymentsOrigin
+    }
+    
+    // 期間ごとに集計
+    for pay in payments {
       let date = pay["date"]!
       let amount = Int(pay["amount"]!)!
       if da[date] == nil {
-        days.append(date)
+        paymentsArray.append(date)
         da[date] = amount
       } else {
         da[date] = da[date]! + amount
       }
     }
     
-    for day in days {
+    for day in paymentsArray {
       result.append([day:da[day]!])
     }
     return result
