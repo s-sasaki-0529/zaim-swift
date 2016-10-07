@@ -465,7 +465,7 @@
                     </view>
                     <connections>
                         <outlet property="tableview" destination="nZ6-hn-xa9" id="OEU-i3-DWV"/>
-                        <segue destination="FVS-Lx-xo5" kind="show" identifier="diaryaggregate" id="791-r0-5OH"/>
+                        <segue destination="FVS-Lx-xo5" kind="show" identifier="aggregate" id="791-r0-5OH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tSm-ZD-SFa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -481,6 +481,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Zke-w9-1Ns"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YPp-aY-L40">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日別集計" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqo-zG-fCn">
@@ -519,14 +520,14 @@
                                 <exclude reference="6iI-Mb-Jfa"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="rmw-PM-ltX"/>
+                                <exclude reference="Ygx-Xj-S7p"/>
+                                <exclude reference="ke6-nW-Jph"/>
                                 <exclude reference="R4B-Hi-yfx"/>
                                 <exclude reference="hLL-9I-wGL"/>
                                 <exclude reference="LqB-jj-5tQ"/>
                                 <exclude reference="RJv-ut-s2O"/>
                                 <exclude reference="xp2-Oy-ndU"/>
-                                <exclude reference="Ygx-Xj-S7p"/>
-                                <exclude reference="ke6-nW-Jph"/>
-                                <exclude reference="rmw-PM-ltX"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -536,19 +537,20 @@
                                 <include reference="6iI-Mb-Jfa"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="rmw-PM-ltX"/>
+                                <include reference="Ygx-Xj-S7p"/>
+                                <include reference="ke6-nW-Jph"/>
                                 <include reference="R4B-Hi-yfx"/>
                                 <include reference="hLL-9I-wGL"/>
                                 <include reference="LqB-jj-5tQ"/>
                                 <include reference="RJv-ut-s2O"/>
                                 <include reference="xp2-Oy-ndU"/>
-                                <include reference="Ygx-Xj-S7p"/>
-                                <include reference="ke6-nW-Jph"/>
-                                <include reference="rmw-PM-ltX"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="tableview" destination="gFc-5U-ndE" id="VNu-iN-9zn"/>
+                        <outlet property="titlelabel" destination="mqo-zG-fCn" id="Jb5-YN-3ce"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="emJ-tb-dO8" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -61,7 +61,8 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
     let row = indexPath.row
     // 日別集計
     if section == 1 && row == 0 {
-      self.performSegueWithIdentifier("diaryaggregate", sender: self)
+      zaim.globalParams["titlelabel"] = "集計 累計 日別"
+      self.performSegueWithIdentifier("aggregate", sender: self)
     }
   }
   
