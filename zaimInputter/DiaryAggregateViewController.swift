@@ -11,12 +11,14 @@ class DiaryAggregateViewController: UIViewController , UITableViewDelegate , UIT
   
   private let zaim: Zaim = (UIApplication.sharedApplication().delegate as! AppDelegate).zaim
   @IBOutlet weak var tableview: UITableView!
+  @IBOutlet weak var titlelabel: UILabel!
   var diary: [Dictionary<String , Int>] = []
   
   /* view did load */
   override func viewDidLoad() {
     super.viewDidLoad()
     diary = zaim.diaryAggregate()
+    titlelabel.text = zaim.globalParams["titlelabel"]!
     tableview.delegate = self
     tableview.dataSource = self
     tableview.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
