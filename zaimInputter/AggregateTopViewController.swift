@@ -61,7 +61,7 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
     let row = indexPath.row
     // 日別集計
     if section == 1 && row == 0 {
-      zaim.globalParams["titlelabel"] = "集計 累計 日別"
+      zaim.globalParams["titlelabel"] = "累計 日別"
       self.performSegueWithIdentifier("aggregate", sender: self)
     }
   }
@@ -70,4 +70,13 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
   @IBAction func onTappedBackButton() {
     self.dismissViewControllerAnimated(true, completion: nil)
   }
+  
+  /* セグエ時にパラメータを引き渡す */
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if zaim.globalParams["titlelabel"] == "累計 日別" {
+      let vc = segue.destinationViewController as! DiaryAggregateViewController
+      vc.data = zaim.diaryAggregate()
+    }
+  }
+
 }

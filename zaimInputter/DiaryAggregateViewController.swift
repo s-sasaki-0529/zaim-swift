@@ -12,12 +12,11 @@ class DiaryAggregateViewController: UIViewController , UITableViewDelegate , UIT
   private let zaim: Zaim = (UIApplication.sharedApplication().delegate as! AppDelegate).zaim
   @IBOutlet weak var tableview: UITableView!
   @IBOutlet weak var titlelabel: UILabel!
-  var diary: [Dictionary<String , Int>] = []
+  internal var data: [Dictionary<String , Int>] = []
   
   /* view did load */
   override func viewDidLoad() {
     super.viewDidLoad()
-    diary = zaim.diaryAggregate()
     titlelabel.text = zaim.globalParams["titlelabel"]!
     tableview.delegate = self
     tableview.dataSource = self
@@ -26,14 +25,14 @@ class DiaryAggregateViewController: UIViewController , UITableViewDelegate , UIT
   
   /* セル数 */
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.diary.count
+    return self.data.count
   }
   
   /* セルの内容 */
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let row = indexPath.row
-    let date = self.diary[row].first!.0
-    let amount = self.diary[row].first!.1
+    let date = self.data[row].first!.0
+    let amount = self.data[row].first!.1
     let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
     cell.textLabel?.text = date
     cell.detailTextLabel!.text = zaim.IntegerToKanji(amount) + " 円"
@@ -43,7 +42,7 @@ class DiaryAggregateViewController: UIViewController , UITableViewDelegate , UIT
   /* セルをタップ */
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let row = indexPath.row
-    let date = diary[row].first!.0
+    let date = data[row].first!.0
     let url = NSURL(string: "https://zaim.net/money?start_date=" + date + "&end_date=" + date)
     UIApplication.sharedApplication().openURL(url!)
   }
