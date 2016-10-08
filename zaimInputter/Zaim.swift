@@ -97,6 +97,8 @@ class Zaim {
     // 集計対象の絞込
     if params["category_id"] != nil {
       payments = payments.filter({ (pay) -> Bool in pay["category_id"] == params["category_id"]})
+    } else if params["genre_id"] != nil {
+      payments = payments.filter({ (pay) -> Bool in pay["genre_id"] == params["genre_id"]})
     }
     
     // 期間ごとに集計
