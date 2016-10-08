@@ -76,6 +76,11 @@ class Zaim {
     return aggregate(newParams)
   }
   
+  /* 支出を特定の条件でランキング化 */
+  internal func createRanking(params: Dictionary<String , String>) -> [Dictionary<String , Int>] {
+    
+  }
+  
   /* 支出を特定の条件で集計する */
   private func aggregate(params: Dictionary<String , String>) -> [Dictionary<String , Int>] {
     var da = Dictionary<String , Int>()
