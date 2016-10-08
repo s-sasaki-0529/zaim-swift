@@ -70,7 +70,6 @@ class Zaim {
   
   /* 月別集計を取得 */
   internal func monthryAggregate (params: Dictionary<String , String>) -> [Dictionary<String , Int>] {
-    // Todo 25日補正が無い
     var newParams = params
     newParams["term"] = "monthly"
     return aggregate(newParams)
