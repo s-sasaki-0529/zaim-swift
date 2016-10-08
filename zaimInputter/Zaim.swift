@@ -190,7 +190,7 @@ class Zaim {
     return self.allMoney!
   }
   
-  /* ジャンル名をgenreIDに変換する */
+  /* ジャンル名をgenreIDに変換する(入力用 静的データ) */
   private func genreToID (genreName: String) -> String {
     let genreIdMap = [
       "食料品": "10101" ,
@@ -204,7 +204,7 @@ class Zaim {
     return genreIdMap[genreName]!
   }
   
-  /* ジャンル名を親カテゴリのcategoryIDに変換する */
+  /* ジャンル名を親カテゴリのcategoryIDに変換する(入力用 静的データ) */
   private func genreToCategoryID(genreName: String) -> String {
     let genreIdMap = [
       "食料品": "101" ,
