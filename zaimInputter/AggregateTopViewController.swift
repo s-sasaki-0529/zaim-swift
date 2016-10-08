@@ -2,6 +2,7 @@ import UIKit
 class AggregateTopViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
   
   private let zaim: Zaim = (UIApplication.sharedApplication().delegate as! AppDelegate).zaim
+  private var aggregate: [Dictionary<String , Int>] = []
   @IBOutlet weak var tableview: UITableView!
   
   let headers = ["基本情報" , "日別集計" , "月別集計" , "ランキング"]
@@ -54,41 +55,49 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
     // 日別集計
     if section == 1 && row == 0 {
       zaim.globalParams["titlelabel"] = "累計 日別"
+      self.aggregate = zaim.diaryAggregate()
       self.performSegueWithIdentifier("aggregate", sender: self)
     }
     // 月別集計 累計
     else if section == 2 && row == 0 {
       zaim.globalParams["titlelabel"] = "累計 月別"
+      self.aggregate = zaim.monthryAggregate([:])
       self.performSegueWithIdentifier("aggregate", sender: self)
     }
     // 月別集計 食費
     else if section == 2 && row == 1 {
       zaim.globalParams["titlelabel"] = "食費 月別"
+      self.aggregate = zaim.monthryAggregate(["category_id": "101"])
       self.performSegueWithIdentifier("aggregate", sender: self)
     }
     // 月別集計 ガス代
     else if section == 2 && row == 2 {
       zaim.globalParams["titlelabel"] = "ガス代 月別"
+      self.aggregate = zaim.monthryAggregate(["genre_id": "10503"])
       self.performSegueWithIdentifier("aggregate", sender: self)
     }
     // 月別集計 電気代
     else if section == 2 && row == 3 {
       zaim.globalParams["titlelabel"] = "電気代 月別"
+      self.aggregate = zaim.monthryAggregate(["genre_id": "10502"])
       self.performSegueWithIdentifier("aggregate", sender: self)
     }
     // 月別集計 水道代
     else if section == 2 && row == 4 {
       zaim.globalParams["titlelabel"] = "水道代 月別"
+      self.aggregate = zaim.monthryAggregate(["genre_id": "10501"])
       self.performSegueWithIdentifier("aggregate", sender: self)
     }
     // 月別集計 ポケモンGO
     else if section == 2 && row == 5 {
       zaim.globalParams["titlelabel"] = "ポケモンGO 月別"
+      self.aggregate = zaim.monthryAggregate(["comment": "ポケモンGO"])
       self.performSegueWithIdentifier("aggregate", sender: self)
     }
     // 月別集計 デグー関連
     else if section == 2 && row == 6 {
       zaim.globalParams["titlelabel"] = "デグー関連 月別"
+      self.aggregate = zaim.monthryAggregate(["genre_id": "10203"])
       self.performSegueWithIdentifier("aggregate", sender: self)
     }
   }
@@ -101,26 +110,9 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
   /* セグエ時にパラメータを引き渡す */
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     let vc = segue.destinationViewController as! DiaryAggregateViewController
-    if zaim.globalParams["titlelabel"] == "累計 日別" {
-      vc.data = zaim.diaryAggregate()
-    } else if zaim.globalParams["titlelabel"] == "累計 月別" {
-      vc.data = zaim.monthryAggregate([:])
-    } else if zaim.globalParams["titlelabel"] == "食費 月別" {
-      vc.data = zaim.monthryAggregate(["category_id" : "101"])
-    } else if zaim.globalParams["titlelabel"] == "ガス代 月別" {
-      vc.data = zaim.monthryAggregate(["genre_id" : "10503"])
-    } else if zaim.globalParams["titlelabel"] == "電気代 月別" {
-      vc.data = zaim.monthryAggregate(["genre_id" : "10502"])
-    } else if zaim.globalParams["titlelabel"] == "水道代 月別" {
-      vc.data = zaim.monthryAggregate(["genre_id" : "10501"])
-    } else if zaim.globalParams["titlelabel"] == "ポケモンGO 月別" {
-      vc.data = zaim.monthryAggregate(["comment" : "ポケモンGO"])
-    } else if zaim.globalParams["titlelabel"] == "デグー関連 月別" {
-      vc.data = zaim.monthryAggregate(["genre_id" : "10203"])
-    }
-    // 合計行
-    let sum = vc.data.reduce(0) { (sum , p) -> Int in sum + p.first!.1 }
-    vc.data.append(["合計" : sum])
+    let sum = self.aggregate.reduce(0) { (sum , p) -> Int in sum + p.first!.1 }
+    self.aggregate.append(["合計" : sum])
+    vc.data = self.aggregate
   }
 
 }

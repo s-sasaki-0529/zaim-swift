@@ -78,7 +78,7 @@ class Zaim {
   
   /* 支出を特定の条件でランキング化 */
   internal func createRanking(params: Dictionary<String , String>) -> [Dictionary<String , Int>] {
-    
+    return []
   }
   
   /* 支出を特定の条件で集計する */
