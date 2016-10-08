@@ -81,6 +81,16 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
       zaim.globalParams["titlelabel"] = "水道代 月別"
       self.performSegueWithIdentifier("aggregate", sender: self)
     }
+    // 月別集計 ポケモンGO
+    else if section == 2 && row == 5 {
+      zaim.globalParams["titlelabel"] = "ポケモンGO 月別"
+      self.performSegueWithIdentifier("aggregate", sender: self)
+    }
+    // 月別集計 デグー関連
+    else if section == 2 && row == 6 {
+      zaim.globalParams["titlelabel"] = "デグー関連 月別"
+      self.performSegueWithIdentifier("aggregate", sender: self)
+    }
   }
   
   /* 戻る */
@@ -103,6 +113,10 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
       vc.data = zaim.monthryAggregate(["genre_id" : "10502"])
     } else if zaim.globalParams["titlelabel"] == "水道代 月別" {
       vc.data = zaim.monthryAggregate(["genre_id" : "10501"])
+    } else if zaim.globalParams["titlelabel"] == "ポケモンGO 月別" {
+      vc.data = zaim.monthryAggregate(["comment" : "ポケモンGO"])
+    } else if zaim.globalParams["titlelabel"] == "デグー関連 月別" {
+      vc.data = zaim.monthryAggregate(["genre_id" : "10203"])
     }
     // 合計行
     let sum = vc.data.reduce(0) { (sum , p) -> Int in sum + p.first!.1 }
