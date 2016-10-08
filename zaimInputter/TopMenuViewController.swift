@@ -9,7 +9,6 @@ class TopMenuViewController: UIViewController {
   /* 集計を見る */
   @IBAction func onTappedAggregateButton() {
     self.performSegueWithIdentifier("aggregatetop", sender: self)
-    
   }
   
   
