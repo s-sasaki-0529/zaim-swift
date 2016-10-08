@@ -102,8 +102,7 @@ class Zaim {
     
     return aggArray
   }
-  
-  
+
   /* categoryIDをカテゴリ名に変換する (集計用 動的データ) */
   internal func categoryIDToCategoryName(categoryID: String) -> String {
     if self.categories == nil {
@@ -121,7 +120,17 @@ class Zaim {
   
   /* genreIDをジャンル名に変換する (集計用 動的データ) */
   internal func genreIDToGenreName(genreID: String) -> String {
-    return ""
+    if self.genres == nil {
+      self.genres = [:]
+      let categoriesInfo = oauth.get(API_URL + "home/genre" , params: [:])["genres"]! as! [NSDictionary]
+      for c in categoriesInfo {
+        let id = String(c["id"]!)
+        let name = String(c["name"]!)
+        self.genres![id] = name
+      }
+      self.genres!["合計"] = "合計"
+    }
+    return self.genres![genreID]!
   }
   
   /* 支出を特定の条件で集計する */
