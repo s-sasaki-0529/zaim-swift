@@ -55,60 +55,27 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
     if section == 0 { return }
     
     // 日別集計
-    if section == 1 && row == 0 {
-      zaim.globalParams["titlelabel"] = "累計 日別"
-      self.aggregate = zaim.diaryAggregate()
-    }
+    if section == 1 && row == 0 { self.aggregate = zaim.diaryAggregate() }
     // 月別集計 累計
-    else if section == 2 && row == 0 {
-      zaim.globalParams["titlelabel"] = "累計 月別"
-      self.aggregate = zaim.monthryAggregate([:])
-    }
+    else if section == 2 && row == 0 { self.aggregate = zaim.monthryAggregate([:]) }
     // 月別集計 食費
-    else if section == 2 && row == 1 {
-      zaim.globalParams["titlelabel"] = "食費 月別"
-      self.aggregate = zaim.monthryAggregate(["category_id": "101"])
-    }
+    else if section == 2 && row == 1 { self.aggregate = zaim.monthryAggregate(["category_id": "101"]) }
     // 月別集計 ガス代
-    else if section == 2 && row == 2 {
-      zaim.globalParams["titlelabel"] = "ガス代 月別"
-      self.aggregate = zaim.monthryAggregate(["genre_id": "10503"])
-    }
+    else if section == 2 && row == 2 { self.aggregate = zaim.monthryAggregate(["genre_id": "10503"]) }
     // 月別集計 電気代
-    else if section == 2 && row == 3 {
-      zaim.globalParams["titlelabel"] = "電気代 月別"
-      self.aggregate = zaim.monthryAggregate(["genre_id": "10502"])
-    }
+    else if section == 2 && row == 3 { self.aggregate = zaim.monthryAggregate(["genre_id": "10502"]) }
     // 月別集計 水道代
-    else if section == 2 && row == 4 {
-      zaim.globalParams["titlelabel"] = "水道代 月別"
-      self.aggregate = zaim.monthryAggregate(["genre_id": "10501"])
-    }
+    else if section == 2 && row == 4 { self.aggregate = zaim.monthryAggregate(["genre_id": "10501"]) }
     // 月別集計 ポケモンGO
-    else if section == 2 && row == 5 {
-      zaim.globalParams["titlelabel"] = "ポケモンGO 月別"
-      self.aggregate = zaim.monthryAggregate(["comment": "ポケモンGO"])
-    }
+    else if section == 2 && row == 5 { self.aggregate = zaim.monthryAggregate(["comment": "ポケモンGO"]) }
     // 月別集計 デグー関連
-    else if section == 2 && row == 6 {
-      zaim.globalParams["titlelabel"] = "デグー関連 月別"
-      self.aggregate = zaim.monthryAggregate(["genre_id": "10203"])
-    }
+    else if section == 2 && row == 6 { self.aggregate = zaim.monthryAggregate(["genre_id": "10203"]) }
     // ランキング カテゴリ
-    else if section == 3 && row == 0 {
-      zaim.globalParams["titlelabel"] = "カテゴリ ランキング"
-      self.aggregate = zaim.createRanking(["target": "category_id"])
-    }
+    else if section == 3 && row == 0 { self.aggregate = zaim.createRanking(["target": "category_id"]) }
     // ランキング ジャンル
-    else if section == 3 && row == 1 {
-      zaim.globalParams["titlelabel"] = "ジャンル ランキング"
-      self.aggregate = zaim.createRanking(["target": "genre_id"])
-    }
+    else if section == 3 && row == 1 { self.aggregate = zaim.createRanking(["target": "genre_id"]) }
     // ランキング 支払先
-    else if section == 3 && row == 2 {
-      zaim.globalParams["titlelabel"] = "支払先 ランキング"
-      self.aggregate = zaim.createRanking(["target": "place"])
-    }
+    else if section == 3 && row == 2 { self.aggregate = zaim.createRanking(["target": "place"]) }
     
     // 集計結果の単位
     if section == 3 {
@@ -116,6 +83,9 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
     } else {
       zaim.globalParams["aggsuffix"] = " 円"
     }
+    
+    // タイトルラベル
+    zaim.globalParams["titlelabel"] = "\(headers[section]) \(contents[section][row])"
     
     self.performSegueWithIdentifier("aggregate", sender: self)
   }
