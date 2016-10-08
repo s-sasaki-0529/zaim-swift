@@ -25,9 +25,9 @@ class DiaryAggregateViewController: UIViewController , UITableViewDelegate , UIT
     let row = indexPath.row
     var key = self.data[row].first!.0
     let value = self.data[row].first!.1
-    if zaim.globalParams["titlelabel"] == "ジャンル ランキング" {
+    if zaim.globalParams["titlelabel"] == "ランキング ジャンル" {
       key = zaim.genreIDToGenreName(key)
-    } else if zaim.globalParams["titlelabel"] == "カテゴリ ランキング" {
+    } else if zaim.globalParams["titlelabel"] == "ランキング カテゴリ" {
       key = zaim.categoryIDToCategoryName(key)
     }
     
