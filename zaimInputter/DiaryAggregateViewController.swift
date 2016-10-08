@@ -40,13 +40,60 @@ class DiaryAggregateViewController: UIViewController , UITableViewDelegate , UIT
   /* セルをタップ */
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let row = indexPath.row
-    let date = data[row].first!.0
-    let url = NSURL(string: "https://zaim.net/money?start_date=" + date + "&end_date=" + date)
-    UIApplication.sharedApplication().openURL(url!)
+    let cell = data[row].first!.0
+    var url: String = ""
+    if cell == "合計" { return }
+    switch zaim.globalParams["titlelabel"]! {
+    case "日別集計 累計" :
+      url = "https://zaim.net/money?mode=payment&start_date=\(cell)&end_date=\(cell)"
+      break
+    case "月別集計 累計" :
+      url = "https://zaim.net/money?mode=payment&start_date=\(cell)-01&end_date=\(monthToLastDay(cell))"
+      break
+    case "月別集計 食費" :
+      url = "https://zaim.net/money?mode=payment&start_date=\(cell)-01&end_date=\(monthToLastDay(cell))&payment_category_id=101"
+      break
+    case "月別集計 ガス代" :
+      url = "https://zaim.net/money?mode=payment&start_date=\(cell)-01&end_date=\(monthToLastDay(cell))&genre_id=10503"
+      break
+    case "月別集計 電気代" :
+      url = "https://zaim.net/money?mode=payment&start_date=\(cell)-01&end_date=\(monthToLastDay(cell))&genre_id=10502"
+      break
+    case "月別集計 水道代" :
+      url = "https://zaim.net/money?mode=payment&start_date=\(cell)-01&end_date=\(monthToLastDay(cell))&genre_id=10501"
+      break
+    case "月別集計 ポケモンGO" :
+      url = "https://zaim.net/money?mode=payment&start_date=\(cell)-01&end_date=\(monthToLastDay(cell))&comment=ポケモンGO"
+      break
+    case "月別集計 デグー関連" :
+      url = "https://zaim.net/money?mode=payment&start_date=\(cell)-01&end_date=\(monthToLastDay(cell))&genre_id=10203"
+      break
+    case "ランキング カテゴリ" :
+      url = "https://zaim.net/money?mode=payment&payment_category_id=\(cell)"
+      break
+    case "ランキング ジャンル" :
+      url = "https://zaim.net/money?mode=payment&genre_id=\(cell)"
+      break
+    case "ランキング 支払先" :
+      url = "https://zaim.net/money?mode=payment&place=\(cell)"
+      break
+    default :
+      break
+    }
+    url = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+    UIApplication.sharedApplication().openURL(NSURL(string: url)!)
   }
   
   /* 戻る */
   @IBAction func onTappedBackButton() {
     self.dismissViewControllerAnimated(true, completion: nil)
+  }
+  
+  /* 2016-05 → 2016-05-31 */
+  private func monthToLastDay(month: String) -> String {
+    let ms = (month as NSString).substringFromIndex(5)
+    let mi = Int(ms)! - 1
+    let days = [31 , 28 , 31 , 30 , 31 , 30 , 31 , 31 , 30 , 31 , 30 , 31]
+    return "\(month)-\(days[mi])"
   }
 }
