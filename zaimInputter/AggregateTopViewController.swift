@@ -100,6 +100,19 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
       self.aggregate = zaim.monthryAggregate(["genre_id": "10203"])
       self.performSegueWithIdentifier("aggregate", sender: self)
     }
+    // ランキング 支払先
+    else if section == 3 && row == 2 {
+      zaim.globalParams["titlelabel"] = "支払先 ランキング"
+      self.aggregate = zaim.createRanking(["target": "place"])
+      self.performSegueWithIdentifier("aggregate", sender: self)
+    }
+    
+    // 集計結果の単位
+    if section == 3 {
+      zaim.globalParams["aggsuffix"] = " 回"
+    } else {
+      zaim.globalParams["aggsuffix"] = " 円"
+    }
   }
   
   /* 戻る */

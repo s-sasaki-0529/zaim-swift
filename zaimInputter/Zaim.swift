@@ -78,7 +78,28 @@ class Zaim {
   
   /* 支出を特定の条件でランキング化 */
   internal func createRanking(params: Dictionary<String , String>) -> [Dictionary<String , Int>] {
-    return []
+    var aggDic = Dictionary<String , Int>()
+    var aggArray = [Dictionary<String , Int>]()
+    
+    // 集計対象の要素ごとにその個数をカウント
+    for pay in getAllPayment() {
+      let key = pay[params["target"]!]!
+      if aggDic[key] == nil {
+        aggDic[key] = 0
+      }
+      aggDic[key]! += 1
+    }
+    
+    // 支払先別の場合、未入力データは削除
+    if params["target"] == "place" {
+      aggDic.removeValueForKey("")
+    }
+    
+    // 配列に変換し、ソート
+    for (k , v) in aggDic { aggArray.append([k:v]) }
+    aggArray = aggArray.sort({ (a , b) in b.first!.1 < a.first!.1 })
+    
+    return aggArray
   }
   
   /* 支出を特定の条件で集計する */
