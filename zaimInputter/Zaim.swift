@@ -99,6 +99,8 @@ class Zaim {
       payments = payments.filter({ (pay) -> Bool in pay["category_id"] == params["category_id"]})
     } else if params["genre_id"] != nil {
       payments = payments.filter({ (pay) -> Bool in pay["genre_id"] == params["genre_id"]})
+    } else if params["comment"] != nil {
+      payments = payments.filter({ (pay) -> Bool in pay["comment"] == params["comment"]})
     }
     
     // 期間ごとに集計
