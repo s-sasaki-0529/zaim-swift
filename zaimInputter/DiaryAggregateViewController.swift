@@ -23,11 +23,17 @@ class DiaryAggregateViewController: UIViewController , UITableViewDelegate , UIT
   /* セルの内容 */
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let row = indexPath.row
-    let date = self.data[row].first!.0
-    let amount = self.data[row].first!.1
+    var key = self.data[row].first!.0
+    let value = self.data[row].first!.1
+    if zaim.globalParams["titlelabel"] == "ジャンル ランキング" {
+      
+    } else if zaim.globalParams["titlelabel"] == "カテゴリ ランキング" {
+      key = zaim.categoryIDToCategoryName(key)
+    }
+    
     let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
-    cell.textLabel?.text = date
-    cell.detailTextLabel!.text = Util.IntegerToKanji(amount) + zaim.globalParams["aggsuffix"]!
+    cell.textLabel?.text = key
+    cell.detailTextLabel!.text = Util.IntegerToKanji(value) + zaim.globalParams["aggsuffix"]!
     return cell
   }
   

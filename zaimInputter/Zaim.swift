@@ -8,6 +8,8 @@ class Zaim {
   let API_URL = "https://api.zaim.net/v2/";
   let oauth: OAuthSwift = OAuthSwift()
   var allMoney: [Dictionary<String , String>]? = nil
+  var categories: Dictionary<String , String>? = nil
+  var genres: Dictionary<String , String>? = nil
   var globalParams: Dictionary<String , String> = Dictionary()
   
   /* 原則シングルトンとする */
@@ -99,6 +101,27 @@ class Zaim {
     aggArray = aggArray.sort({ (a , b) in b.first!.1 < a.first!.1 })
     
     return aggArray
+  }
+  
+  
+  /* categoryIDをカテゴリ名に変換する (集計用 動的データ) */
+  internal func categoryIDToCategoryName(categoryID: String) -> String {
+    if self.categories == nil {
+      self.categories = [:]
+      let categoriesInfo = oauth.get(API_URL + "home/category" , params: [:])["categories"]! as! [NSDictionary]
+      for c in categoriesInfo {
+        let id = String(c["id"]!)
+        let name = String(c["name"]!)
+        self.categories![id] = name
+      }
+      self.categories!["合計"] = "合計"
+    }
+    return self.categories![categoryID]!
+  }
+  
+  /* genreIDをジャンル名に変換する (集計用 動的データ) */
+  internal func genreIDToGenreName(genreID: String) -> String {
+    return ""
   }
   
   /* 支出を特定の条件で集計する */
