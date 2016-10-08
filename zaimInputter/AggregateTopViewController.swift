@@ -17,10 +17,10 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
     tableview.delegate = self
     tableview.dataSource = self
     tableview.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-    contents[0][0] = "入力数 \(zaim.IntegerToKanji(zaim.totalInputCount()))回"
-    contents[0][1] = "総収入 \(zaim.IntegerToKanji(zaim.totalIncome()))円"
-    contents[0][2] = "総支出 \(zaim.IntegerToKanji(zaim.totalPayment()))円"
-    contents[0][3] = "総利益 \(zaim.IntegerToKanji(zaim.totalProfit()))円"
+    contents[0][0] = "入力数 \(Util.IntegerToKanji(zaim.totalInputCount()))回"
+    contents[0][1] = "総収入 \(Util.IntegerToKanji(zaim.totalIncome()))円"
+    contents[0][2] = "総支出 \(Util.IntegerToKanji(zaim.totalPayment()))円"
+    contents[0][3] = "総利益 \(Util.IntegerToKanji(zaim.totalProfit()))円"
   }
   
   /* セクション数 */
@@ -61,6 +61,11 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
       zaim.globalParams["titlelabel"] = "累計 月別"
       self.performSegueWithIdentifier("aggregate", sender: self)
     }
+    // 月別集計 食費
+    else if section == 2 && row == 1 {
+      zaim.globalParams["titlelabel"] = "食費 月別"
+      self.performSegueWithIdentifier("aggregate", sender: self)
+    }
   }
   
   /* 戻る */
@@ -70,12 +75,13 @@ class AggregateTopViewController: UIViewController , UITableViewDelegate , UITab
   
   /* セグエ時にパラメータを引き渡す */
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    let vc = segue.destinationViewController as! DiaryAggregateViewController
     if zaim.globalParams["titlelabel"] == "累計 日別" {
-      let vc = segue.destinationViewController as! DiaryAggregateViewController
       vc.data = zaim.diaryAggregate()
     } else if zaim.globalParams["titlelabel"] == "累計 月別" {
-      let vc = segue.destinationViewController as! DiaryAggregateViewController
       vc.data = zaim.monthryAggregate([:])
+    } else if zaim.globalParams["titlelabel"] == "食費 月別" {
+      vc.data = zaim.monthryAggregate(["category_id" : "101"])
     }
   }
 

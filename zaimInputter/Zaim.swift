@@ -94,6 +94,11 @@ class Zaim {
       payments = paymentsOrigin
     }
     
+    // 集計対象の絞込
+    if params["category_id"] != nil {
+      payments = payments.filter({ (pay) -> Bool in pay["category_id"] == params["category_id"]})
+    }
+    
     // 期間ごとに集計
     for pay in payments {
       let date = pay["date"]!
@@ -182,17 +187,6 @@ class Zaim {
       "バス": "103"
     ]
     return genreIdMap[genreName]!
-  }
-  
-  /* 金額を"万"を含んだ文字列に変換する */
-  internal func IntegerToKanji (num: Int) -> String {
-    if num < 10000 {
-      return String(num)
-    } else {
-      let m = num / 10000
-      let s = num % 10000
-      return "\(m)万\(s)"
-    }
   }
   
 }

@@ -27,7 +27,7 @@ class DiaryAggregateViewController: UIViewController , UITableViewDelegate , UIT
     let amount = self.data[row].first!.1
     let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
     cell.textLabel?.text = date
-    cell.detailTextLabel!.text = zaim.IntegerToKanji(amount) + " 円"
+    cell.detailTextLabel!.text = Util.IntegerToKanji(amount) + " 円"
     return cell
   }
   
