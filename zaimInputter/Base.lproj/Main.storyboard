@@ -551,6 +551,7 @@
                     <connections>
                         <outlet property="tableview" destination="gFc-5U-ndE" id="VNu-iN-9zn"/>
                         <outlet property="titlelabel" destination="mqo-zG-fCn" id="Jb5-YN-3ce"/>
+                        <segue destination="1pY-eq-nMv" kind="show" identifier="backtotop" id="ZeC-bM-lVe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="emJ-tb-dO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
