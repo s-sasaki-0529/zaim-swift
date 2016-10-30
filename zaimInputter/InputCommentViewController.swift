@@ -34,7 +34,7 @@ class InputCommentViewController: UIViewController , UITextFieldDelegate {
     let delay = 1 * Double(NSEC_PER_SEC)
     let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
     dispatch_after(time, dispatch_get_main_queue(), {
-      exit(0)
+      self.performSegueWithIdentifier("backtotop", sender: self)
     })
   }
   
