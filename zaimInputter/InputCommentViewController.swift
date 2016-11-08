@@ -31,11 +31,7 @@ class InputCommentViewController: UIViewController , UITextFieldDelegate {
     let comment = commentTextView.text!
     zaim.createPaymentData(genre, place: place, amount: amount, comment: comment)
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-    let delay = 1 * Double(NSEC_PER_SEC)
-    let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-    dispatch_after(time, dispatch_get_main_queue(), {
-      self.performSegueWithIdentifier("backtotop", sender: self)
-    })
+    zaim.globalParams = [:];
   }
   
   /* 戻る */
